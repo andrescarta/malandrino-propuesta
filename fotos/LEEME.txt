@@ -1,0 +1,15 @@
+Poné las fotos en esta carpeta con estos nombres exactos (jpg, idealmente de 1600 px de ancho como máximo):
+
+hero.jpg               Foto principal (vertical, 4:5)
+salon-planta-baja.jpg
+salon-planta-alta.jpg
+cocina-horno.jpg
+barra.jpg
+vereda.jpg
+jardin.jpg
+pizza.jpg
+cocteleria.jpg
+evento.jpg
+tano.jpg               Tano o el equipo
+
+Si una foto no está, la página muestra un recuadro con el nombre que falta.

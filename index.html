@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Malandrino — Un proyecto funcionando</title>
+<meta name="description" content="Bar-pizzería funcionando en Capital, San Juan. Se vende la operación en marcha con todo su equipamiento. Escuchamos ofertas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f1e9; --paper:#fffaf2; --ink:#1f1a16; --muted:#6b6058;
+    --line:#e3d9cb; --accent:#b4482a; --accent-ink:#fff; --ph:#ece3d6;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#17130f; --paper:#201b16; --ink:#f2ebe1; --muted:#b3a698;
+      --line:#3a312a; --accent:#e0714f; --accent-ink:#17130f; --ph:#2a231d;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.15;margin:0}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:24px;height:56px}
+  nav .brand{font-family:Fraunces,serif;font-weight:600;text-decoration:none;font-size:19px}
+  nav ul{display:flex;gap:18px;list-style:none;margin:0 0 0 auto;padding:0;overflow-x:auto;scrollbar-width:none}
+  nav ul a{text-decoration:none;font-size:14px;color:var(--muted);white-space:nowrap}
+  nav ul a:hover{color:var(--ink)}
+  @media (max-width:820px){ nav ul{display:none} }
+
+  /* Hero */
+  .hero{padding:56px 0 40px}
+  .hero .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+  .kicker{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+  .hero h1{font-size:clamp(38px,6vw,64px)}
+  .hero p.lead{font-size:19px;color:var(--muted);margin:18px 0 28px;max-width:34ch}
+  .btn{display:inline-block;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;padding:13px 22px;border-radius:999px}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);margin-left:8px}
+  .facts{display:flex;flex-wrap:wrap;gap:28px;margin-top:34px;padding-top:24px;border-top:1px solid var(--line)}
+  .facts div b{display:block;font-family:Fraunces,serif;font-size:28px;font-weight:600}
+  .facts div span{font-size:13px;color:var(--muted)}
+  @media (max-width:820px){ .hero .grid{grid-template-columns:1fr} }
+
+  /* Photo slots */
+  .ph{position:relative;background:var(--ph);border-radius:14px;overflow:hidden;aspect-ratio:4/3}
+  .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .ph .lbl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;color:var(--muted);font-size:13px;border:1.5px dashed var(--line);border-radius:14px}
+  .ph.has-img .lbl{display:none}
+  .ph.tall{aspect-ratio:4/5}
+
+  /* Sections */
+  section.block{padding:64px 0;border-top:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:28px}
+  .sec-head .num{font-family:Fraunces,serif;color:var(--accent);font-size:20px}
+  .sec-head h2{font-size:clamp(28px,4vw,40px)}
+  .intro{font-size:19px;max-width:62ch;margin:0 0 28px}
+  .muted{color:var(--muted)}
+  .small{font-size:14px}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .card h3{font-size:20px;margin-bottom:6px}
+  .card p{margin:0;color:var(--muted);font-size:15px}
+
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+  @media (max-width:820px){ .gallery{grid-template-columns:1fr 1fr} }
+  @media (max-width:520px){ .gallery{grid-template-columns:1fr} }
+
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  @media (max-width:820px){ .two{grid-template-columns:1fr} }
+
+  table{width:100%;border-collapse:collapse;font-size:15px;background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+  tr:last-child td{border-bottom:0}
+  td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+  .tbl-title{font-weight:600;margin:0 0 10px}
+  .scroll{overflow-x:auto}
+
+  .note{background:var(--paper);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 10px 10px 0;margin-top:20px;font-size:15px}
+
+  ul.clean{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+  ul.clean li{padding-left:22px;position:relative}
+  ul.clean li::before{content:"";position:absolute;left:0;top:.7em;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+
+  ol.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+  ol.steps li{counter-increment:s;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px}
+  ol.steps li::before{content:counter(s);display:block;font-family:Fraunces,serif;font-size:28px;color:var(--accent);margin-bottom:6px}
+
+  .offer{background:var(--ink);color:var(--bg);border-radius:20px;padding:44px 32px;text-align:center}
+  .offer h2{font-size:clamp(28px,4vw,42px)}
+  .offer p{max-width:52ch;margin:14px auto 24px;opacity:.85}
+  .offer .btn{background:var(--accent);color:var(--accent-ink)}
+
+  footer{padding:40px 0 60px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Malandrino</a>
+    <ul>
+      <li><a href="#que-es">Qué es</a></li>
+      <li><a href="#valor-actual">Valor actual</a></li>
+      <li><a href="#espacio">El espacio</a></li>
+      <li><a href="#equipamiento">Equipamiento</a></li>
+      <li><a href="#potencial">Potencial</a></li>
+      <li><a href="#acompanamiento">Acompañamiento</a></li>
+      <li><a href="#condiciones">Condiciones</a></li>
+      <li><a href="#pasos">Próximos pasos</a></li>
+    </ul>
+  </div>
+</nav>
+<header class="hero" id="top">
+  <div class="wrap grid">
+    <div>
+      <div class="kicker">Se vende · Capital, San Juan</div>
+      <h1>Un proyecto funcionando</h1>
+      <p class="lead">Un bar de Palermo en San Juan: pizzería funcionando en Capital, lista para seguir con un nombre nuevo. Se vende la operación en marcha con todo su equipamiento, más el acompañamiento de su fundador durante la transición.</p>
+      <a class="btn" href="#contacto">Hacé tu oferta</a><a class="btn ghost" href="#que-es">Ver el proyecto</a>
+      <div class="facts">
+        <div><b>440 m²</b><span>280 cubiertos + 160 al aire libre</span></div>
+        <div><b>121</b><span>puestos, ampliable a 165</span></div>
+        <div><b>+14.000</b><span>seguidores orgánicos en Instagram</span></div>
+      </div>
+    </div>
+    <div class="ph tall"><img src="fotos/hero.jpg" alt="Malandrino"><div class="lbl">Foto principal<br>fotos/hero.jpg</div></div>
+  </div>
+</header>
+
+<section class="block" id="que-es">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">01</span><h2>Qué es Malandrino</h2></div>
+    <p class="intro">Pizzería, schiacciateria y bar con agenda cultural: abre de miércoles a domingo, de 19 a 02 de la mañana. Una propuesta simple y auténtica, pensada como lugar de encuentro.</p>
+    <div class="cards">
+      <div class="card"><h3>Valores</h3><p>Simplicidad, autenticidad y encuentro.</p></div>
+      <div class="card"><h3>Propuesta gastronómica</h3><p>Masa de fermentación larga con biga y horno a piedra, papas fritas naturales, coctelería clásica italiana y cerveza artesanal.</p></div>
+      <div class="card"><h3>Propuesta cultural</h3><p>Música en vivo y eventos como Boca de Zorro, el slam poético de San Juan, con doce ediciones en el local. La planta alta, con barra propia, recibe eventos de hasta 70 personas en formato auditorio.</p></div>
+    </div>
+    <!-- 1.5 Valorización de emprendimientos locales: se agrega cuando esté escrita en el documento -->
+    <div class="gallery">
+      <div class="ph"><img src="fotos/pizza.jpg" alt="Pizza"><div class="lbl">Producto: pizza<br>fotos/pizza.jpg</div></div>
+      <div class="ph"><img src="fotos/cocteleria.jpg" alt="Coctelería"><div class="lbl">Coctelería<br>fotos/cocteleria.jpg</div></div>
+      <div class="ph"><img src="fotos/evento.jpg" alt="Evento cultural"><div class="lbl">Evento cultural<br>fotos/evento.jpg</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="valor-actual">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02</span><h2>El valor actual</h2></div>
+    <p class="intro">Quien compra no arranca de cero: se lleva un negocio abierto y todo lo que lo hace funcionar.</p>
+    <div class="cards">
+      <div class="card"><h3>La operación en marcha</h3><p>Un local abierto, con clientela, proveedores y una forma de trabajar probada.</p></div>
+      <div class="card"><h3>El concepto de producto</h3><p>Recetas, masa de fermentación larga con biga y procesos de cocina.</p></div>
+      <div class="card"><h3>Todo el equipamiento</h3><p>Cocina, frío, mobiliario para 121 personas ampliable a 165, sonido, climatización y vajilla.</p></div>
+      <div class="card"><h3>El acompañamiento</h3><p>Tano asesora al nuevo dueño durante un plazo acordado.</p></div>
+      <div class="card"><h3>Una comunidad propia</h3><p>Una cuenta de IG con más de 14.000 seguidores.</p></div>
+    </div>
+    <p class="note">Los más de 14.000 seguidores de Instagram son orgánicos. Construir esa audiencia con publicidad en Meta costaría entre $3 y $11 millones, a un costo de USD 0,15 a 0,50 por seguidor (<a href="https://felipevergara.co/blogs/meta-ads/aumentar-seguidores-instagram-meta-ads/" target="_blank" rel="noopener">referencia</a>) y un dólar de $1.545.</p>
+    <p class="muted small" style="margin-top:16px">La gestión está ordenada: ventas en Fudo, con análisis por día y horario, y presencia en Google, Instagram, WhatsApp Business y Facebook.</p>
+  </div>
+</section>
+
+<!-- 3. El valor potencial: se agrega cuando esté escrito en el documento -->
+
+<section class="block" id="espacio">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">03</span><h2>El espacio</h2></div>
+    <p class="intro">El local está en esquina, en Urquiza Sur 991. Tiene 280 m² propios y cubiertos en dos plantas, más 160 m² de espacio público municipal que se usa como salón exterior.</p>
+    <div class="two">
+      <div class="scroll">
+        <p class="tbl-title">Espacio propio: 280 m² cubiertos</p>
+        <table>
+          <tr><th>Planta</th><th>Sector</th><th>Superficie</th><th>Detalle</th></tr>
+          <tr><td>Baja</td><td>Salón</td><td class="n">110 m²</td><td>Salón principal con barra</td></tr>
+          <tr><td>Baja</td><td>Cocina y barra</td><td class="n">53 m²</td><td>Horno pizzero a piedra de 1,90 m y cámara de frío</td></tr>
+          <tr><td>Baja</td><td>Baños</td><td class="n">30 m²</td><td>Cuatro: hombres, mujeres, accesible y personal</td></tr>
+          <tr><td>Alta</td><td>Salón</td><td class="n">87 m²</td><td>Barra propia; recibe eventos de hasta 70 personas en formato auditorio</td></tr>
+        </table>
+      </div>
+      <div class="scroll">
+        <p class="tbl-title">Espacio municipal de uso: 160 m² al aire libre</p>
+        <table>
+          <tr><th>Sector</th><th>Superficie</th><th>Detalle</th></tr>
+          <tr><td>Vereda en esquina</td><td class="n">80 m²</td><td>Con sombrillas, sobre la esquina</td></tr>
+          <tr><td>Jardín frontal</td><td class="n">80 m²</td><td>Ambientado con plantas</td></tr>
+        </table>
+        <p class="muted small">El uso del espacio municipal depende de un permiso de la municipalidad. Hoy está en uso y el trámite está para renovar.</p>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="ph"><img src="fotos/salon-planta-baja.jpg" alt="Salón planta baja"><div class="lbl">Salón planta baja<br>fotos/salon-planta-baja.jpg</div></div>
+      <div class="ph"><img src="fotos/salon-planta-alta.jpg" alt="Salón planta alta"><div class="lbl">Salón planta alta<br>fotos/salon-planta-alta.jpg</div></div>
+      <div class="ph"><img src="fotos/cocina-horno.jpg" alt="Cocina y horno"><div class="lbl">Cocina y horno<br>fotos/cocina-horno.jpg</div></div>
+      <div class="ph"><img src="fotos/barra.jpg" alt="Barra"><div class="lbl">Barra<br>fotos/barra.jpg</div></div>
+      <div class="ph"><img src="fotos/vereda.jpg" alt="Vereda en esquina"><div class="lbl">Vereda en esquina<br>fotos/vereda.jpg</div></div>
+      <div class="ph"><img src="fotos/jardin.jpg" alt="Jardín frontal"><div class="lbl">Jardín frontal<br>fotos/jardin.jpg</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="equipamiento">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">04</span><h2>El equipamiento</h2></div>
+    <p class="intro">Todo el equipamiento, el mobiliario y la vajilla se incluyen en la operación.</p>
+    <div class="scroll"><table>
+      <tr><th>Rubro</th><th>Qué incluye</th></tr>
+      <tr><td>Cocina caliente</td><td>Horno pizzero a piedra de 1,90 m, horno convector, cocina de 6 hornallas, freidora, tostadora</td></tr>
+      <tr><td>Cocina fría</td><td>Cámara de frío, 2 heladeras bajo mesada, 2 verticales, 2 freezers, mesadas de acero inoxidable</td></tr>
+      <tr><td>Mobiliario</td><td>38 mesas, 105 sillas, 16 banquetas, 3 barras, estanterías</td></tr>
+      <tr><td>Vajilla y servicio</td><td>830 piezas: cubiertos, platos, copas, vasos, pizzeras, fraperas</td></tr>
+      <tr><td>Climatización</td><td>2 aires acondicionados de 18.000 frigorías, frío/calor</td></tr>
+      <tr><td>Sonido</td><td>Consola de 6 canales y 4 parlantes</td></tr>
+      <tr><td>Electro y utensilios</td><td>Amasadora de 15 kg, licuadora, minipimer, cortadora de papas</td></tr>
+      <tr><td>Barra y exterior</td><td>Cafetera espresso y 3 sombrillas</td></tr>
+      <tr><td>Ambientación</td><td>Trabajo de plantas en jardín y salones</td></tr>
+      <tr><td>Sistema de venta</td><td>2 comanderas térmicas y caja registradora</td></tr>
+    </table></div>
+    <p class="muted small">El inventario completo, ítem por ítem, está disponible a pedido.</p>
+  </div>
+</section>
+
+<section class="block" id="potencial">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">05</span><h2>Potencial de ventas</h2></div>
+    <!-- Ventas reales: se agregan cuando estén en el documento -->
+    <p class="intro">Con 121 puestos y la demanda concentrada en viernes y sábado, el local puede atender entre 1.100 y 2.800 personas por mes, según cuánto se llene el fin de semana: una facturación de entre $20 y $50 millones por mes. Son proyecciones de capacidad, no ventas históricas.</p>
+    <div class="scroll">
+      <table>
+        <tr><th>Escenario</th><th>Supuesto para viernes y sábado</th><th>Personas por noche</th><th>Personas por semana</th><th>Personas por mes</th><th>Facturación mensual</th></tr>
+        <tr><td>Conservador</td><td>60% del salón, un turno</td><td class="n">73</td><td class="n">259</td><td class="n">1.123</td><td class="n">$20.200.000</td></tr>
+        <tr><td>Medio</td><td>Salón lleno, un turno</td><td class="n">121</td><td class="n">432</td><td class="n">1.871</td><td class="n">$33.700.000</td></tr>
+        <tr><td>Potencial</td><td>Salón lleno, un turno y medio</td><td class="n">182</td><td class="n">648</td><td class="n">2.807</td><td class="n">$50.500.000</td></tr>
+      </table>
+    </div>
+    <p class="muted small">Cómo se calcula: viernes y sábado aportan hoy el 56% de la semana, así que la semana completa es lo del fin de semana dividido 0,56; el mes son 4,33 semanas. La facturación es personas por mes por ticket promedio actual de $18.000 por persona.</p>
+  </div>
+</section>
+
+<section class="block" id="acompanamiento">
+  <div class="wrap two">
+    <div>
+      <div class="sec-head"><span class="num">06</span><h2>Acompañamiento</h2></div>
+      <p class="intro">Tano, fundador de Malandrino, asesora al nuevo dueño durante ___ meses para que el traspaso no se note en la cocina ni en el servicio.</p>
+      <ul class="clean">
+        <li>Traspaso de recetas, masa y procesos de cocina.</li>
+        <li>Proveedores, compras y armado de la carta.</li>
+        <li>Organización de barra, salón y eventos.</li>
+        <li>Uso de Fudo y lectura de las ventas.</li>
+      </ul>
+      <p class="muted small" style="margin-top:18px">Tano no participa de la sociedad ni de las decisiones del negocio; su rol es de consultor por el plazo acordado.</p>
+    </div>
+    <div class="ph"><img src="fotos/tano.jpg" alt="Tano en la cocina"><div class="lbl">Tano / equipo<br>fotos/tano.jpg</div></div>
+  </div>
+</section>
+
+<!-- 8. Las contras: se agrega cuando esté escrito en el documento -->
+
+<section class="block" id="condiciones">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">07</span><h2>Condiciones</h2></div>
+    <p class="intro">La venta no tiene un precio fijado: escuchamos ofertas por la operación en marcha con todo su equipamiento.</p>
+    <div class="cards">
+      <div class="card"><h3>Alquiler del inmueble</h3><p>$3.000.000 por mes, con un contrato nuevo firmado directo con el propietario.</p></div>
+      <div class="card"><h3>Equipamiento</h3><p>Incluido en la operación. El inventario completo, ítem por ítem, está disponible a pedido.</p></div>
+      <div class="card"><h3>Identidad</h3><p>El comprador opera con nombre e imagen propios; la marca Malandrino no se transfiere.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="pasos">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">08</span><h2>Próximos pasos</h2></div>
+    <ol class="steps">
+      <li>Visita al local, con el servicio funcionando.</li>
+      <li>Revisión del inventario y del estado del equipamiento.</li>
+      <li>Acuerdo del contrato de alquiler con el propietario.</li>
+      <li>Firma, entrega del local y arranque del acompañamiento.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="block" id="contacto">
+  <div class="wrap">
+    <div class="offer">
+      <h2>Escuchamos ofertas</h2>
+      <p>Coordinemos una visita con el local funcionando y te contamos todo en detalle.</p>
+      <a class="btn" href="#contacto">Contacto a completar</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Tano · Urquiza Sur 991, Capital, San Juan · teléfono y mail a completar.</div>
+</footer>
+
+<script>
+  document.querySelectorAll('.ph img').forEach(function(img){
+    function ok(){ img.parentElement.classList.add('has-img'); }
+    function bad(){ img.remove(); }
+    if (img.complete) { img.naturalWidth ? ok() : bad(); }
+    else { img.addEventListener('load', ok); img.addEventListener('error', bad); }
+  });
+</script>
+</body>
+</html>
