@@ -4,139 +4,163 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Malandrino — Un proyecto funcionando</title>
-<meta name="description" content="Bar-pizzería funcionando en Capital, San Juan. Se vende la operación en marcha con todo su equipamiento. Escuchamos ofertas.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="Un proyecto napolitano en San Juan. Se transfiere el emprendimiento en marcha con todo su equipamiento. Escuchamos ofertas de compra y propuestas de sociedad.">
+<link rel="icon" href="marca/malandrino-isotipo-crema.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/saira-condensed-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  @font-face{font-family:"Saira Condensed";src:url(fonts/saira-condensed-900.woff2) format("woff2");font-weight:900;font-display:swap}
+  @font-face{font-family:"Saira Condensed";src:url(fonts/saira-condensed-700.woff2) format("woff2");font-weight:700;font-display:swap}
+  @font-face{font-family:"Spirits Neutral";src:url(fonts/spirits-neutral-400.woff2) format("woff2");font-weight:400;font-display:swap}
+  @font-face{font-family:"Satoshi";src:url(fonts/satoshi-400.woff2) format("woff2");font-weight:400;font-display:swap}
+  @font-face{font-family:"Satoshi";src:url(fonts/satoshi-500.woff2) format("woff2");font-weight:500;font-display:swap}
+  @font-face{font-family:"Satoshi";src:url(fonts/satoshi-700.woff2) format("woff2");font-weight:700;font-display:swap}
+
+  /* Manual de marca Malandrino: tinta + crema como base, rojo de acento, verde de apoyo */
   :root{
-    --bg:#f6f1e9; --paper:#fffaf2; --ink:#1f1a16; --muted:#6b6058;
-    --line:#e3d9cb; --accent:#b4482a; --accent-ink:#fff; --ph:#ece3d6;
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#17130f; --paper:#201b16; --ink:#f2ebe1; --muted:#b3a698;
-      --line:#3a312a; --accent:#e0714f; --accent-ink:#17130f; --ph:#2a231d;
-    }
+    --crema:#fffaf3; --tinta:#101815; --rojo:#e63738; --verde:#254630;
+    --fondo:var(--tinta); --texto:var(--crema); --texto-suave:#b7b6b0;
+    --linea:#3a403c; --superficie:#17201c;
+    --titulo:"Saira Condensed","Saira Extra Condensed","Arial Narrow",sans-serif;
+    --secundaria:"Spirits Neutral",Georgia,serif;
+    --cuerpo:Satoshi,system-ui,sans-serif;
+    --r1:4px; --r2:10px;
+    color-scheme:dark;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-  h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.15;margin:0}
+  body{margin:0;background:var(--fondo);color:var(--texto);font:400 17px/1.6 var(--cuerpo);-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--titulo);font-weight:900;text-transform:uppercase;line-height:.95;margin:0;text-wrap:balance;letter-spacing:.005em}
   a{color:inherit}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  a:focus-visible,.btn:focus-visible{outline:2px solid var(--crema);outline-offset:3px}
+  .wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 
   /* Nav */
-  nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;gap:24px;height:56px}
-  nav .brand{font-family:Fraunces,serif;font-weight:600;text-decoration:none;font-size:19px}
-  nav ul{display:flex;gap:18px;list-style:none;margin:0 0 0 auto;padding:0;overflow-x:auto;scrollbar-width:none}
-  nav ul a{text-decoration:none;font-size:14px;color:var(--muted);white-space:nowrap}
-  nav ul a:hover{color:var(--ink)}
-  @media (max-width:820px){ nav ul{display:none} }
+  nav{position:sticky;top:0;z-index:10;background:var(--fondo);border-bottom:1px solid var(--linea)}
+  nav .wrap{display:flex;align-items:center;gap:28px;height:64px}
+  nav .brand{display:block;line-height:0}
+  nav .brand img{height:26px;width:auto}
+  nav ul{display:flex;gap:20px;list-style:none;margin:0 0 0 auto;padding:0}
+  nav ul a{text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave);white-space:nowrap}
+  nav ul a:hover{color:var(--crema)}
+  @media (max-width:980px){ nav ul{display:none} }
 
   /* Hero */
-  .hero{padding:56px 0 40px}
-  .hero .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
-  .kicker{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
-  .hero h1{font-size:clamp(38px,6vw,64px)}
-  .hero p.lead{font-size:19px;color:var(--muted);margin:18px 0 28px;max-width:34ch}
-  .btn{display:inline-block;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;padding:13px 22px;border-radius:999px}
-  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);margin-left:8px}
-  .facts{display:flex;flex-wrap:wrap;gap:28px;margin-top:34px;padding-top:24px;border-top:1px solid var(--line)}
-  .facts div b{display:block;font-family:Fraunces,serif;font-size:28px;font-weight:600}
-  .facts div span{font-size:13px;color:var(--muted)}
-  @media (max-width:820px){ .hero .grid{grid-template-columns:1fr} }
+  .hero{padding:64px 0 56px}
+  .hero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .kicker{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--texto-suave);font-weight:500;margin-bottom:18px}
+  .hero h1{font-size:clamp(56px,9vw,112px);line-height:.88}
+  .hero h1 span{color:var(--rojo);display:block}
+  .hero p.lead{font-family:var(--secundaria);font-size:clamp(20px,2.2vw,24px);line-height:1.3;color:var(--crema);margin:24px 0 32px;max-width:32ch}
+  .btn{display:inline-block;background:var(--rojo);color:var(--crema);text-decoration:none;font:700 15px/1 var(--cuerpo);letter-spacing:.04em;text-transform:uppercase;padding:16px 22px;border-radius:var(--r1)}
+  .actions{display:flex;flex-wrap:wrap;gap:8px}
+  .btn.ghost{background:transparent;border:1px solid var(--linea)}
+  .btn.ghost:hover{border-color:var(--crema)}
+  .facts{display:flex;flex-wrap:wrap;gap:32px;margin-top:40px;padding-top:24px;border-top:1px solid var(--linea)}
+  .facts div b{display:block;font:900 44px/1 var(--titulo)}
+  .facts div span{font-size:13px;color:var(--texto-suave)}
+  .hero-photo{position:relative}
+  .hero-photo .sello{position:absolute;width:112px;left:-28px;bottom:-28px;z-index:2}
+  @media (max-width:860px){ .hero .grid{grid-template-columns:1fr} .hero-photo .sello{left:auto;right:16px;width:88px} }
 
-  /* Photo slots */
-  .ph{position:relative;background:var(--ph);border-radius:14px;overflow:hidden;aspect-ratio:4/3}
+  /* Fotos */
+  .ph{position:relative;background:var(--superficie);border-radius:var(--r2);overflow:hidden;aspect-ratio:4/3;max-width:100%}
   .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-  .ph .lbl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;color:var(--muted);font-size:13px;border:1.5px dashed var(--line);border-radius:14px}
+  .ph .lbl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;color:var(--texto-suave);font-size:13px;border:1.5px dashed var(--linea);border-radius:var(--r2)}
   .ph.has-img .lbl{display:none}
   .ph.tall{aspect-ratio:4/5}
 
-  /* Sections */
-  section.block{padding:64px 0;border-top:1px solid var(--line)}
-  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:28px}
-  .sec-head .num{font-family:Fraunces,serif;color:var(--accent);font-size:20px}
-  .sec-head h2{font-size:clamp(28px,4vw,40px)}
-  .intro{font-size:19px;max-width:62ch;margin:0 0 28px}
-  .muted{color:var(--muted)}
+  /* Secciones */
+  section.block{padding:80px 0;border-top:1px solid var(--linea)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px}
+  .sec-head .num{font:900 22px/1 var(--titulo);color:var(--rojo)}
+  .sec-head h2{font-size:clamp(36px,5.5vw,60px)}
+  .intro{font-family:var(--secundaria);font-size:clamp(19px,2vw,22px);line-height:1.35;max-width:58ch;margin:0 0 32px}
+  .muted{color:var(--texto-suave)}
   .small{font-size:14px}
+  strong{font-weight:700}
 
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px}
-  .card h3{font-size:20px;margin-bottom:6px}
-  .card p{margin:0;color:var(--muted);font-size:15px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .card{border:1px solid var(--linea);border-radius:var(--r2);padding:24px}
+  .card h3{font-size:24px;font-weight:700;margin-bottom:10px;line-height:1.05}
+  .card p{margin:0;color:var(--texto-suave);font-size:15px}
 
-  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
-  @media (max-width:820px){ .gallery{grid-template-columns:1fr 1fr} }
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+  @media (max-width:860px){ .gallery{grid-template-columns:1fr 1fr} }
   @media (max-width:520px){ .gallery{grid-template-columns:1fr} }
 
-  .two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-  @media (max-width:820px){ .two{grid-template-columns:1fr} }
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  .two > *{min-width:0}
+  @media (max-width:860px){ .two{grid-template-columns:1fr} }
 
-  table{width:100%;border-collapse:collapse;font-size:15px;background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
-  th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+  table{width:100%;border-collapse:collapse;font-size:15px;background:var(--superficie);border-radius:var(--r2);overflow:hidden}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--linea);vertical-align:top}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--texto-suave);font-weight:500}
   tr:last-child td{border-bottom:0}
   td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
-  .tbl-title{font-weight:600;margin:0 0 10px}
+  .tbl-title{font:700 22px/1.05 var(--titulo);text-transform:uppercase;margin:0 0 12px}
   .scroll{overflow-x:auto}
 
-  .note{background:var(--paper);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 10px 10px 0;margin-top:20px;font-size:15px}
+  .note{background:var(--verde);color:var(--crema);padding:20px 24px;border-radius:var(--r2);margin-top:24px;font-size:16px}
+  .note a{color:var(--crema)}
 
-  ul.clean{list-style:none;padding:0;margin:0;display:grid;gap:12px}
-  ul.clean li{padding-left:22px;position:relative}
-  ul.clean li::before{content:"";position:absolute;left:0;top:.7em;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  ul.clean{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+  ul.clean li{padding-left:24px;position:relative}
+  ul.clean li::before{content:"";position:absolute;left:0;top:.55em;width:10px;height:10px;border-radius:2px;background:var(--rojo)}
 
-  ol.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-  ol.steps li{counter-increment:s;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px}
-  ol.steps li::before{content:counter(s);display:block;font-family:Fraunces,serif;font-size:28px;color:var(--accent);margin-bottom:6px}
+  ol.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+  ol.steps li{counter-increment:s;border:1px solid var(--linea);border-radius:var(--r2);padding:22px}
+  ol.steps li::before{content:counter(s);display:block;font:900 44px/1 var(--titulo);color:var(--rojo);margin-bottom:10px}
 
-  .offer{background:var(--ink);color:var(--bg);border-radius:20px;padding:44px 32px;text-align:center}
-  .offer h2{font-size:clamp(28px,4vw,42px)}
-  .offer p{max-width:52ch;margin:14px auto 24px;opacity:.85}
-  .offer .btn{background:var(--accent);color:var(--accent-ink)}
+  .offer{background:var(--crema);color:var(--tinta);border-radius:var(--r2);padding:56px 32px;display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
+  .offer img{width:140px}
+  .offer h2{font-size:clamp(36px,5vw,56px)}
+  .offer p{font-family:var(--secundaria);font-size:20px;line-height:1.35;max-width:46ch;margin:16px 0 24px}
+  @media (max-width:700px){ .offer{grid-template-columns:1fr;padding:40px 24px} .offer img{width:96px} }
 
-  footer{padding:40px 0 60px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+  footer{padding:40px 0 64px;color:var(--texto-suave);font-size:14px;border-top:1px solid var(--linea)}
+  footer .wrap{display:flex;align-items:center;gap:16px}
+  footer img{height:28px}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="#top">Malandrino</a>
+    <a class="brand" href="#top" aria-label="Malandrino"><img src="marca/malandrino-horizontal-crema.svg" alt="Malandrino"></a>
     <ul>
       <li><a href="#que-es">Qué es</a></li>
       <li><a href="#valor-actual">Valor actual</a></li>
       <li><a href="#valor-potencial">Potencial</a></li>
-      <li><a href="#espacio">El espacio</a></li>
+      <li><a href="#espacio">Espacio</a></li>
       <li><a href="#equipamiento">Equipamiento</a></li>
       <li><a href="#potencial">Ventas</a></li>
-      <li><a href="#acompanamiento">Acompañamiento</a></li>
       <li><a href="#contras">Contras</a></li>
       <li><a href="#condiciones">Condiciones</a></li>
-      <li><a href="#pasos">Próximos pasos</a></li>
     </ul>
   </div>
 </nav>
 <header class="hero" id="top">
   <div class="wrap grid">
     <div>
-      <div class="kicker">Se vende · Capital, San Juan</div>
-      <h1>Un proyecto funcionando</h1>
+      <div class="kicker">Se transfiere · Capital, San Juan</div>
+      <h1>Un proyecto <span>funcionando</span></h1>
       <p class="lead">Un proyecto napolitano en San Juan: pizzería funcionando en Capital, lista para pasar a nuevas manos. Se transfiere el emprendimiento en marcha con todo su equipamiento, más el acompañamiento de su fundador durante la transición. Escuchamos ofertas de compra y también propuestas de sociedad.</p>
-      <a class="btn" href="#contacto">Hacé tu oferta</a><a class="btn ghost" href="#que-es">Ver el proyecto</a>
+      <div class="actions"><a class="btn" href="#contacto">Hacé tu oferta</a><a class="btn ghost" href="#que-es">Ver el proyecto</a></div>
       <div class="facts">
         <div><b>440 m²</b><span>280 cubiertos + 160 al aire libre</span></div>
         <div><b>121</b><span>puestos, ampliable a 165</span></div>
         <div><b>+14.000</b><span>seguidores orgánicos en Instagram</span></div>
       </div>
     </div>
-    <div class="ph tall"><img src="fotos/hero.jpg" alt="Malandrino"><div class="lbl">Foto principal<br>fotos/hero.jpg</div></div>
+    <div class="hero-photo">
+      <div class="ph tall"><img src="fotos/hero.jpg" alt="Malandrino"><div class="lbl">Foto principal<br>fotos/hero.jpg</div></div>
+      <img class="sello" src="marca/malandrino-sello-rojo.svg" alt="">
+    </div>
   </div>
 </header>
+
 
 <section class="block" id="que-es">
   <div class="wrap">
@@ -325,15 +349,18 @@
 <section class="block" id="contacto">
   <div class="wrap">
     <div class="offer">
-      <h2>Escuchamos ofertas de compra y de sociedad</h2>
-      <p>Coordinemos una visita con el local funcionando y te contamos todo en detalle.</p>
-      <a class="btn" href="#contacto">Contacto a completar</a>
+      <img src="marca/malandrino-sello-rojo.svg" alt="">
+      <div>
+        <h2>Escuchamos ofertas de compra y de sociedad</h2>
+        <p>Coordinemos una visita con el local funcionando y te contamos todo en detalle.</p>
+        <a class="btn" href="#contacto">Contacto a completar</a>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">Tano · Urquiza Sur 991, Capital, San Juan · teléfono y mail a completar.</div>
+  <div class="wrap"><img src="marca/malandrino-isotipo-crema.svg" alt=""><span>Tano · Urquiza Sur 991, Capital, San Juan · teléfono y mail a completar.</span></div>
 </footer>
 
 <script>
