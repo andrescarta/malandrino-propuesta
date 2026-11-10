@@ -85,6 +85,11 @@
   .card h3{font-size:24px;font-weight:700;margin-bottom:10px;line-height:1.05}
   .card p{margin:0;color:var(--texto-suave);font-size:15px}
 
+  figure.ph{margin:0}
+  .ph figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;font-size:13px;color:var(--crema);background:linear-gradient(transparent,rgba(16,24,21,.85))}
+  .banda{position:relative;height:clamp(240px,42vw,520px);overflow:hidden;background:var(--superficie)}
+  .banda img{width:100%;height:100%;object-fit:cover;display:block}
+  .banda span{position:absolute;left:16px;bottom:14px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--crema);background:rgba(16,24,21,.7);padding:6px 10px;border-radius:var(--r1)}
   .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
   @media (max-width:860px){ .gallery{grid-template-columns:1fr 1fr} }
   @media (max-width:520px){ .gallery{grid-template-columns:1fr} }
@@ -161,11 +166,13 @@
       </div>
     </div>
     <div class="hero-photo">
-      <div class="ph tall"><img src="fotos/hero.jpg" alt="Malandrino"><div class="lbl">Foto principal<br>fotos/hero.jpg</div></div>
+      <div class="ph tall has-img"><img src="fotos/hero.jpg" alt="Brindis con vermut bajo el cartel de Malandrino"></div>
       <img class="sello" src="marca/malandrino-sello-rojo.svg" alt="">
     </div>
   </div>
 </header>
+
+<div class="banda"><img src="fotos/banda-dron.jpg" alt="La esquina de Malandrino iluminada de noche, vista desde arriba" loading="lazy"><span>Urquiza Sur 991 · esquina · Capital, San Juan</span></div>
 
 
 <section class="block" id="que-es">
@@ -186,9 +193,12 @@
       <li><strong>Materia prima local.</strong> En la cocina usamos todo el producto local que podemos.</li>
     </ul>
     <div class="gallery">
-      <div class="ph"><img src="fotos/pizza.jpg" alt="Pizza"><div class="lbl">Producto: pizza<br>fotos/pizza.jpg</div></div>
-      <div class="ph"><img src="fotos/cocteleria.jpg" alt="Coctelería"><div class="lbl">Coctelería<br>fotos/cocteleria.jpg</div></div>
-      <div class="ph"><img src="fotos/evento.jpg" alt="Evento cultural"><div class="lbl">Evento cultural<br>fotos/evento.jpg</div></div>
+      <figure class="ph"><img src="fotos/pizza.jpg" alt="Porción de pizza de jamón crudo y rúcula" loading="lazy"><figcaption>Masa de fermentación larga, horno a piedra</figcaption></figure>
+      <figure class="ph"><img src="fotos/schiacciata.jpg" alt="Schiacciata con vermut" loading="lazy"><figcaption>Schiacciata y vermut</figcaption></figure>
+      <figure class="ph"><img src="fotos/cocteleria.jpg" alt="Negroni" loading="lazy"><figcaption>Coctelería clásica italiana</figcaption></figure>
+      <figure class="ph"><img src="fotos/brindis.jpg" alt="Brindis" loading="lazy"><figcaption>Para compartir</figcaption></figure>
+      <figure class="ph"><img src="fotos/evento.jpg" alt="Público en un evento del local" loading="lazy"><figcaption>Eventos y presentaciones</figcaption></figure>
+      <figure class="ph"><img src="fotos/dj.jpg" alt="DJ en vivo" loading="lazy"><figcaption>Música en vivo y DJs</figcaption></figure>
     </div>
   </div>
 </section>
@@ -217,6 +227,11 @@
       <div class="card"><h3>Café, almuerzos y meriendas</h3><p>Reabrir los turnos de día.</p></div>
       <div class="card"><h3>Coworking y reuniones</h3><p>En el salón de planta alta o en planta baja.</p></div>
       <div class="card"><h3>Almacén de productores</h3><p>Venta de productos de emprendimientos locales dentro del local.</p></div>
+    </div>
+        <div class="gallery">
+      <figure class="ph"><img src="fotos/cafe-de-dia.jpg" alt="Schiacciata y café al sol" loading="lazy"><figcaption>Turno de día: café y almuerzos</figcaption></figure>
+      <figure class="ph"><img src="fotos/brunch.jpg" alt="Brunch con café y jugo" loading="lazy"><figcaption>Desayunos y meriendas</figcaption></figure>
+      <figure class="ph"><img src="fotos/fachada-dia.jpg" alt="Fachada de Malandrino de día" loading="lazy"><figcaption>El local de día</figcaption></figure>
     </div>
     <p class="muted small" style="margin-top:16px">Más allá de todo lo que ya generó, Malandrino sigue siendo un lienzo en blanco con mucho por completar.</p>
   </div>
@@ -248,12 +263,15 @@
       </div>
     </div>
     <div class="gallery">
-      <div class="ph"><img src="fotos/salon-planta-baja.jpg" alt="Salón planta baja"><div class="lbl">Salón planta baja<br>fotos/salon-planta-baja.jpg</div></div>
-      <div class="ph"><img src="fotos/salon-planta-alta.jpg" alt="Salón planta alta"><div class="lbl">Salón planta alta<br>fotos/salon-planta-alta.jpg</div></div>
-      <div class="ph"><img src="fotos/cocina-horno.jpg" alt="Cocina y horno"><div class="lbl">Cocina y horno<br>fotos/cocina-horno.jpg</div></div>
-      <div class="ph"><img src="fotos/barra.jpg" alt="Barra"><div class="lbl">Barra<br>fotos/barra.jpg</div></div>
-      <div class="ph"><img src="fotos/vereda.jpg" alt="Vereda en esquina"><div class="lbl">Vereda en esquina<br>fotos/vereda.jpg</div></div>
-      <div class="ph"><img src="fotos/jardin.jpg" alt="Jardín frontal"><div class="lbl">Jardín frontal<br>fotos/jardin.jpg</div></div>
+      <figure class="ph"><img src="fotos/salon-planta-baja.jpg" alt="Salón de planta baja con gente" loading="lazy"><figcaption>Salón de planta baja</figcaption></figure>
+      <figure class="ph"><img src="fotos/salon-evento.jpg" alt="Salón de planta baja en un evento" loading="lazy"><figcaption>Planta baja en un evento</figcaption></figure>
+      <figure class="ph"><img src="fotos/doble-altura.jpg" alt="Doble altura con plantas" loading="lazy"><figcaption>Doble altura y planta alta</figcaption></figure>
+      <figure class="ph"><img src="fotos/salon-planta-alta.jpg" alt="Planta alta al atardecer" loading="lazy"><figcaption>Planta alta, con vista al atardecer</figcaption></figure>
+      <figure class="ph"><img src="fotos/cocina-horno.jpg" alt="Horno a piedra encendido" loading="lazy"><figcaption>Horno a piedra</figcaption></figure>
+      <figure class="ph"><img src="fotos/barra.jpg" alt="Barra" loading="lazy"><figcaption>Barra</figcaption></figure>
+      <figure class="ph"><img src="fotos/vereda.jpg" alt="Vereda en esquina desde arriba" loading="lazy"><figcaption>Vereda en esquina</figcaption></figure>
+      <figure class="ph"><img src="fotos/entrada-noche.jpg" alt="Entrada de noche con el cartel" loading="lazy"><figcaption>Entrada de noche</figcaption></figure>
+      <figure class="ph"><img src="fotos/jardin-interior.jpg" alt="Escalera y jardín interior" loading="lazy"><figcaption>Escalera y jardín interior</figcaption></figure>
     </div>
   </div>
 </section>
@@ -315,7 +333,7 @@
       </ul>
       
     </div>
-    <div class="ph"><img src="fotos/tano.jpg" alt="Tano en la cocina"><div class="lbl">Tano / equipo<br>fotos/tano.jpg</div></div>
+    <figure class="ph tall"><img src="fotos/tano.jpg" alt="El equipo de Malandrino en la vereda del local" loading="lazy"><figcaption>El equipo de Malandrino</figcaption></figure>
   </div>
 </section>
 
