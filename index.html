@@ -90,16 +90,7 @@
   .banda{position:relative;height:clamp(240px,42vw,520px);overflow:hidden;background:var(--superficie)}
   .banda img{width:100%;height:100%;object-fit:cover;display:block}
   .banda span{position:absolute;left:16px;bottom:14px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--crema);background:rgba(16,24,21,.7);padding:6px 10px;border-radius:var(--r1)}
-  .ig{display:block;margin-top:24px;max-width:560px;background:var(--superficie);border:1px solid var(--linea);border-radius:var(--r2);padding:16px;color:inherit;text-decoration:none}
-  .ig:hover{border-color:var(--crema)}
-  .ig-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-  .ig-head b{display:block;font-size:15px}
-  .ig-head span{font-size:13px;color:var(--texto-suave)}
-  .ig-avatar{width:44px;height:44px;border-radius:50%;background:var(--tinta);padding:9px;box-sizing:border-box;flex:none;border:1px solid var(--linea)}
-  .ig-head .ig-btn{margin-left:auto;flex:none;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--crema);background:var(--rojo);padding:8px 12px;border-radius:var(--r1)}
-  .ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;border-radius:var(--r1);overflow:hidden}
-  .ig-grid img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
-  @media (max-width:520px){ .ig-head .ig-btn{display:none} }
+  .ig-link{margin-top:20px}
   .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
   @media (max-width:860px){ .gallery{grid-template-columns:1fr 1fr} }
   @media (max-width:520px){ .gallery{grid-template-columns:1fr} }
@@ -226,24 +217,7 @@
       <div class="card"><h3>Una comunidad propia</h3><p>Una cuenta de Instagram, <a href="https://www.instagram.com/malandrino.sj/" target="_blank" rel="noopener">@malandrino.sj</a>, con más de 14.000 seguidores.</p></div>
     </div>
     <p class="note">Los más de 14.000 seguidores de Instagram son orgánicos. Construir esa audiencia con publicidad en Meta costaría entre $3 y $11 millones, a un costo de USD 0,15 a 0,50 por seguidor (<a href="https://felipevergara.co/blogs/meta-ads/aumentar-seguidores-instagram-meta-ads/" target="_blank" rel="noopener">referencia</a>) y un dólar de $1.545.</p>
-    <a class="ig" href="https://www.instagram.com/malandrino.sj/" target="_blank" rel="noopener">
-      <div class="ig-head">
-        <img class="ig-avatar" src="marca/malandrino-isotipo-crema.svg" alt="">
-        <div><b>@malandrino.sj</b><span>+14.000 seguidores · Pizzería, schiacciateria y bar cultural</span></div>
-        <span class="ig-btn">Ver en Instagram</span>
-      </div>
-      <div class="ig-grid">
-        <img src="fotos/ig-schiacciata.jpg" alt="" loading="lazy">
-        <img src="fotos/ig-cocteleria.jpg" alt="" loading="lazy">
-        <img src="fotos/ig-pizza.jpg" alt="" loading="lazy">
-        <img src="fotos/ig-brindis.jpg" alt="" loading="lazy">
-        <img src="fotos/ig-dj.jpg" alt="" loading="lazy">
-        <img src="fotos/ig-cafe-de-dia.jpg" alt="" loading="lazy">
-        <img src="fotos/ig-cocina-horno.jpg" alt="" loading="lazy">
-        <img src="fotos/ig-entrada-noche.jpg" alt="" loading="lazy">
-        <img src="fotos/ig-evento.jpg" alt="" loading="lazy">
-      </div>
-    </a>
+    <a class="btn ig-link" href="https://www.instagram.com/malandrino.sj/" target="_blank" rel="noopener">Ver @malandrino.sj en Instagram</a>
     <p class="muted small" style="margin-top:16px">La gestión está ordenada: ventas en Fudo, con análisis por día y horario, y presencia en Google, Instagram, WhatsApp Business y Facebook.</p>
   </div>
 </section>
