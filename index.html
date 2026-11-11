@@ -91,6 +91,25 @@
   .banda img{width:100%;height:100%;object-fit:cover;display:block}
   .banda span{position:absolute;left:16px;bottom:14px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--crema);background:rgba(16,24,21,.7);padding:6px 10px;border-radius:var(--r1)}
   .ig-link{margin-top:20px}
+  .cuadros{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+  .cuadros-uno{grid-template-columns:1fr}
+  @media (max-width:700px){ .cuadros{grid-template-columns:1fr} }
+  .cuadro{position:relative;margin:0;border-radius:var(--r2);overflow:hidden;background:var(--superficie);cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
+  .cuadro-img{position:relative;aspect-ratio:4/5;overflow:hidden}
+  .cuadros-uno .cuadro-img{aspect-ratio:16/10}
+  @media (max-width:700px){ .cuadros-uno .cuadro-img{aspect-ratio:4/5} }
+  .cuadro-img img{position:relative;width:100%;height:100%;display:block}
+  .cuadro-cover .cuadro-img img{object-fit:cover}
+  .cuadro-contain .cuadro-img img{object-fit:contain}
+  .cuadro-contain .cuadro-img::before{content:"";position:absolute;inset:-40px;background:var(--bg) center/cover;filter:blur(28px) brightness(.55)}
+  .cuadro figcaption{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:baseline;gap:12px;padding:40px 16px 14px;background:linear-gradient(transparent,rgba(16,24,21,.85));color:var(--crema)}
+  .cuadro-tit{font:900 30px/1 var(--titulo);text-transform:uppercase}
+  .cuadro-n{font-size:13px;color:var(--texto-suave);font-variant-numeric:tabular-nums}
+  .cuadro-estado{margin-left:auto;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave)}
+  .cuadro.pausado .cuadro-estado{color:var(--crema)}
+  .cuadro button{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:0;border-radius:50%;background:rgba(16,24,21,.7);color:var(--crema);font-size:28px;line-height:1;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}
+  .cuadro-prev{left:12px}.cuadro-next{right:12px}
+  .cuadro.pausado button{opacity:1;pointer-events:auto}
   .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
   @media (max-width:860px){ .gallery{grid-template-columns:1fr 1fr} }
   @media (max-width:520px){ .gallery{grid-template-columns:1fr} }
@@ -194,13 +213,22 @@
       <li><strong>Espacio para artistas locales.</strong> Exposiciones y encuentros culturales.</li>
       <li><strong>Materia prima local.</strong> Priorizamos los ingredientes de proveedores locales.</li>
     </ul>
+    <div class="cuadros">
+    <figure class="cuadro cuadro-cover" data-fotos="fotos/comida/01.jpg,fotos/comida/02.jpg,fotos/comida/03.jpg,fotos/comida/04.jpg,fotos/comida/05.jpg,fotos/comida/06.jpg,fotos/comida/07.jpg,fotos/comida/08.jpg,fotos/comida/09.jpg,fotos/comida/10.jpg,fotos/comida/11.jpg,fotos/comida/12.jpg,fotos/comida/13.jpg,fotos/comida/14.jpg,fotos/comida/15.jpg,fotos/comida/16.jpg,fotos/comida/17.jpg,fotos/comida/18.jpg,fotos/comida/19.jpg,fotos/comida/20.jpg,fotos/comida/21.jpg,fotos/comida/22.jpg,fotos/comida/23.jpg,fotos/comida/24.jpg" aria-label="Comida: fotos que cambian solas. Tocá para pausar.">
+      <div class="cuadro-img"><img src="fotos/comida/01.jpg" alt="Comida"></div>
+      <figcaption><span class="cuadro-tit">Comida</span><span class="cuadro-n">1 / 24</span><span class="cuadro-estado">Tocá para pausar</span></figcaption>
+      <button class="cuadro-prev" type="button" aria-label="Foto anterior">‹</button><button class="cuadro-next" type="button" aria-label="Foto siguiente">›</button>
+    </figure>
+    <figure class="cuadro cuadro-cover" data-fotos="fotos/bebidas/01.jpg,fotos/bebidas/02.jpg,fotos/bebidas/03.jpg,fotos/bebidas/04.jpg,fotos/bebidas/05.jpg,fotos/bebidas/06.jpg,fotos/bebidas/07.jpg,fotos/bebidas/08.jpg,fotos/bebidas/09.jpg,fotos/bebidas/10.jpg,fotos/bebidas/11.jpg,fotos/bebidas/12.jpg,fotos/bebidas/13.jpg,fotos/bebidas/14.jpg,fotos/bebidas/15.jpg,fotos/bebidas/16.jpg,fotos/bebidas/17.jpg,fotos/bebidas/18.jpg,fotos/bebidas/19.jpg,fotos/bebidas/20.jpg,fotos/bebidas/21.jpg,fotos/bebidas/22.jpg,fotos/bebidas/23.jpg,fotos/bebidas/24.jpg" aria-label="Bebidas: fotos que cambian solas. Tocá para pausar.">
+      <div class="cuadro-img"><img src="fotos/bebidas/01.jpg" alt="Bebidas"></div>
+      <figcaption><span class="cuadro-tit">Bebidas</span><span class="cuadro-n">1 / 24</span><span class="cuadro-estado">Tocá para pausar</span></figcaption>
+      <button class="cuadro-prev" type="button" aria-label="Foto anterior">‹</button><button class="cuadro-next" type="button" aria-label="Foto siguiente">›</button>
+    </figure>
+    </div>
     <div class="gallery">
-      <figure class="ph"><img src="fotos/pizza.jpg" alt="Porción de pizza de jamón crudo y rúcula" loading="lazy"><figcaption>Masa de fermentación larga, horno a piedra</figcaption></figure>
-      <figure class="ph"><img src="fotos/schiacciata.jpg" alt="Schiacciata con vermut" loading="lazy"><figcaption>Schiacciata y vermut</figcaption></figure>
-      <figure class="ph"><img src="fotos/cocteleria.jpg" alt="Negroni" loading="lazy"><figcaption>Coctelería clásica italiana</figcaption></figure>
-      <figure class="ph"><img src="fotos/brindis.jpg" alt="Brindis" loading="lazy"><figcaption>Para compartir</figcaption></figure>
       <figure class="ph"><img src="fotos/evento.jpg" alt="Público en un evento del local" loading="lazy"><figcaption>Eventos y presentaciones</figcaption></figure>
       <figure class="ph"><img src="fotos/dj.jpg" alt="DJ en vivo" loading="lazy"><figcaption>Música en vivo y DJs</figcaption></figure>
+      <figure class="ph"><img src="fotos/brindis.jpg" alt="Brindis" loading="lazy"><figcaption>Para compartir</figcaption></figure>
     </div>
   </div>
 </section>
@@ -265,16 +293,12 @@
         <p class="muted small">El uso del espacio municipal depende de un permiso de la municipalidad. Hoy está en uso y el trámite está para renovar.</p>
       </div>
     </div>
-    <div class="gallery">
-      <figure class="ph"><img src="fotos/salon-planta-baja.jpg" alt="Salón de planta baja con gente" loading="lazy"><figcaption>Salón de planta baja</figcaption></figure>
-      <figure class="ph"><img src="fotos/salon-evento.jpg" alt="Salón de planta baja en un evento" loading="lazy"><figcaption>Planta baja en un evento</figcaption></figure>
-      <figure class="ph"><img src="fotos/doble-altura.jpg" alt="Doble altura con plantas" loading="lazy"><figcaption>Doble altura y planta alta</figcaption></figure>
-      <figure class="ph"><img src="fotos/salon-planta-alta.jpg" alt="Planta alta al atardecer" loading="lazy"><figcaption>Planta alta, con vista al atardecer</figcaption></figure>
-      <figure class="ph"><img src="fotos/cocina-horno.jpg" alt="Horno a piedra encendido" loading="lazy"><figcaption>Horno a piedra</figcaption></figure>
-      <figure class="ph"><img src="fotos/barra.jpg" alt="Barra" loading="lazy"><figcaption>Barra</figcaption></figure>
-      <figure class="ph"><img src="fotos/vereda.jpg" alt="Vereda en esquina desde arriba" loading="lazy"><figcaption>Vereda en esquina</figcaption></figure>
-      <figure class="ph"><img src="fotos/entrada-noche.jpg" alt="Entrada de noche con el cartel" loading="lazy"><figcaption>Entrada de noche</figcaption></figure>
-      <figure class="ph"><img src="fotos/jardin-interior.jpg" alt="Escalera y jardín interior" loading="lazy"><figcaption>Escalera y jardín interior</figcaption></figure>
+    <div class="cuadros cuadros-uno">
+    <figure class="cuadro cuadro-contain" data-fotos="fotos/espacio/01.jpg,fotos/espacio/02.jpg,fotos/espacio/03.jpg,fotos/espacio/04.jpg,fotos/espacio/05.jpg,fotos/espacio/06.jpg,fotos/espacio/07.jpg,fotos/espacio/08.jpg,fotos/espacio/09.jpg,fotos/espacio/10.jpg,fotos/espacio/11.jpg,fotos/espacio/12.jpg,fotos/espacio/13.jpg,fotos/espacio/14.jpg,fotos/espacio/15.jpg,fotos/espacio/16.jpg" aria-label="El espacio: fotos que cambian solas. Tocá para pausar.">
+      <div class="cuadro-img"><img src="fotos/espacio/01.jpg" alt="El espacio"></div>
+      <figcaption><span class="cuadro-tit">El espacio</span><span class="cuadro-n">1 / 16</span><span class="cuadro-estado">Tocá para pausar</span></figcaption>
+      <button class="cuadro-prev" type="button" aria-label="Foto anterior">‹</button><button class="cuadro-next" type="button" aria-label="Foto siguiente">›</button>
+    </figure>
     </div>
   </div>
 </section>
@@ -445,6 +469,30 @@
     if (img.complete) { img.naturalWidth ? ok() : bad(); }
     else { img.addEventListener('load', ok); img.addEventListener('error', bad); }
   });
+
+  // Cuadros: cambian solos a 90 por minuto; tocar pausa / reanuda; con pausa, flechas para recorrer
+  (function(){
+    var RITMO = 60000 / 90; // 90 fotos por minuto
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('.cuadro').forEach(function(c, k){
+      var fotos = c.dataset.fotos.split(','), i = 0, timer = null, visible = false;
+      var img = c.querySelector('img'), n = c.querySelector('.cuadro-n'), est = c.querySelector('.cuadro-estado');
+      var box = c.querySelector('.cuadro-img');
+      var pausado = reduce, cargadas = false;
+      function precargar(){ if (cargadas) return; cargadas = true; fotos.forEach(function(s){ var im = new Image(); im.src = s; }); }
+      function mostrar(j){ i = (j + fotos.length) % fotos.length; img.src = fotos[i]; box.style.setProperty('--bg', 'url(' + fotos[i] + ')'); n.textContent = (i + 1) + ' / ' + fotos.length; }
+      function andar(){ clearInterval(timer); timer = null; if (!pausado && visible) timer = setInterval(function(){ mostrar(i + 1); }, RITMO); }
+      function estado(){ c.classList.toggle('pausado', pausado); est.textContent = pausado ? 'En pausa · tocá para seguir' : 'Tocá para pausar'; andar(); }
+      c.addEventListener('click', function(e){ if (e.target.closest('button')) return; pausado = !pausado; estado(); });
+      c.querySelector('.cuadro-prev').addEventListener('click', function(){ mostrar(i - 1); });
+      c.querySelector('.cuadro-next').addEventListener('click', function(){ mostrar(i + 1); });
+      mostrar(0);
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function(es){ es.forEach(function(e){ visible = e.isIntersecting; if (visible) precargar(); andar(); }); }, {rootMargin: '200px'}).observe(c);
+      } else { visible = true; precargar(); }
+      estado();
+    });
+  })();
 </script>
 </body>
 </html>
