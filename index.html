@@ -470,9 +470,9 @@
     else { img.addEventListener('load', ok); img.addEventListener('error', bad); }
   });
 
-  // Cuadros: cambian solos a 90 por minuto; tocar pausa / reanuda; con pausa, flechas para recorrer
+  // Cuadros: cambian solos a 60 por minuto; tocar pausa / reanuda; con pausa, flechas para recorrer
   (function(){
-    var RITMO = 60000 / 90; // 90 fotos por minuto
+    var RITMO = 60000 / 60; // 60 fotos por minuto
     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
     document.querySelectorAll('.cuadro').forEach(function(c, k){
       var fotos = c.dataset.fotos.split(','), i = 0, timer = null, visible = false;
