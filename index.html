@@ -115,6 +115,9 @@
   .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
   @media (max-width:860px){ .gallery{grid-template-columns:1fr 1fr} }
   @media (max-width:520px){ .gallery{grid-template-columns:1fr} }
+  .gallery-4{grid-template-columns:repeat(4,1fr);gap:12px}
+  @media (max-width:860px){ .gallery-4{grid-template-columns:1fr 1fr} }
+  @media (max-width:520px){ .gallery-4{grid-template-columns:1fr 1fr;gap:8px} }
 
   .two{display:grid;grid-template-columns:1fr 1fr;gap:32px}
   .two > *{min-width:0}
@@ -216,23 +219,26 @@
       <li><strong>Materia prima local.</strong> Priorizamos los ingredientes de proveedores locales.</li>
     </ul>
     <div class="cuadros">
-    <figure class="cuadro cuadro-cover" data-fotos="fotos/comida/01.jpg,fotos/comida/02.jpg,fotos/comida/03.jpg,fotos/comida/04.jpg,fotos/comida/05.jpg,fotos/comida/06.jpg,fotos/comida/07.jpg,fotos/comida/08.jpg,fotos/comida/09.jpg,fotos/comida/10.jpg,fotos/comida/11.jpg,fotos/comida/12.jpg,fotos/comida/13.jpg,fotos/comida/14.jpg,fotos/comida/15.jpg,fotos/comida/16.jpg,fotos/comida/17.jpg,fotos/comida/18.jpg,fotos/comida/19.jpg,fotos/comida/20.jpg,fotos/comida/21.jpg,fotos/comida/22.jpg,fotos/comida/23.jpg,fotos/comida/24.jpg,fotos/comida/25.jpg,fotos/comida/26.jpg,fotos/comida/27.jpg,fotos/comida/28.jpg" aria-label="Comida: fotos que cambian solas. Tocá para pausar.">
+    <figure class="cuadro cuadro-cover" data-fotos="fotos/comida/01.jpg,fotos/comida/02.jpg,fotos/comida/03.jpg,fotos/comida/04.jpg,fotos/comida/05.jpg,fotos/comida/06.jpg,fotos/comida/07.jpg,fotos/comida/08.jpg,fotos/comida/09.jpg,fotos/comida/10.jpg,fotos/comida/11.jpg,fotos/comida/12.jpg,fotos/comida/13.jpg,fotos/comida/14.jpg,fotos/comida/15.jpg,fotos/comida/16.jpg,fotos/comida/17.jpg,fotos/comida/18.jpg,fotos/comida/19.jpg,fotos/comida/20.jpg,fotos/comida/21.jpg,fotos/comida/22.jpg,fotos/comida/23.jpg,fotos/comida/24.jpg,fotos/comida/25.jpg,fotos/comida/26.jpg,fotos/comida/27.jpg,fotos/comida/28.jpg" data-rpm="60" data-desfase="0" aria-label="Comida: fotos que cambian solas. Tocá para pausar.">
       <div class="cuadro-img"><img src="fotos/comida/01.jpg" alt="Comida"></div>
       <figcaption><span class="cuadro-tit">Comida</span><span class="cuadro-n">1 / 28</span><span class="cuadro-estado">Tocá para pausar</span></figcaption>
       <button class="cuadro-prev" type="button" aria-label="Foto anterior">‹</button><button class="cuadro-next" type="button" aria-label="Foto siguiente">›</button>
     </figure>
-    <figure class="cuadro cuadro-cover" data-fotos="fotos/bebidas/01.jpg,fotos/bebidas/02.jpg,fotos/bebidas/03.jpg,fotos/bebidas/04.jpg,fotos/bebidas/05.jpg,fotos/bebidas/06.jpg,fotos/bebidas/07.jpg,fotos/bebidas/08.jpg,fotos/bebidas/09.jpg,fotos/bebidas/10.jpg,fotos/bebidas/11.jpg,fotos/bebidas/12.jpg,fotos/bebidas/13.jpg,fotos/bebidas/14.jpg,fotos/bebidas/15.jpg,fotos/bebidas/16.jpg,fotos/bebidas/17.jpg,fotos/bebidas/18.jpg,fotos/bebidas/19.jpg,fotos/bebidas/20.jpg,fotos/bebidas/21.jpg,fotos/bebidas/22.jpg,fotos/bebidas/23.jpg,fotos/bebidas/24.jpg" aria-label="Bebidas: fotos que cambian solas. Tocá para pausar.">
+    <figure class="cuadro cuadro-cover" data-fotos="fotos/bebidas/01.jpg,fotos/bebidas/02.jpg,fotos/bebidas/03.jpg,fotos/bebidas/04.jpg,fotos/bebidas/05.jpg,fotos/bebidas/06.jpg,fotos/bebidas/07.jpg,fotos/bebidas/08.jpg,fotos/bebidas/09.jpg,fotos/bebidas/10.jpg,fotos/bebidas/11.jpg,fotos/bebidas/12.jpg,fotos/bebidas/13.jpg,fotos/bebidas/14.jpg,fotos/bebidas/15.jpg,fotos/bebidas/16.jpg,fotos/bebidas/17.jpg,fotos/bebidas/18.jpg,fotos/bebidas/19.jpg,fotos/bebidas/20.jpg,fotos/bebidas/21.jpg,fotos/bebidas/22.jpg,fotos/bebidas/23.jpg,fotos/bebidas/24.jpg" data-rpm="60" data-desfase="500" aria-label="Bebidas: fotos que cambian solas. Tocá para pausar.">
       <div class="cuadro-img"><img src="fotos/bebidas/01.jpg" alt="Bebidas"></div>
       <figcaption><span class="cuadro-tit">Bebidas</span><span class="cuadro-n">1 / 24</span><span class="cuadro-estado">Tocá para pausar</span></figcaption>
       <button class="cuadro-prev" type="button" aria-label="Foto anterior">‹</button><button class="cuadro-next" type="button" aria-label="Foto siguiente">›</button>
     </figure>
     </div>
-    <div class="cuadros cuadros-uno cuadros-ancho">
-    <figure class="cuadro cuadro-contain" data-fotos="fotos/cultura/01.jpg,fotos/cultura/02.jpg,fotos/cultura/03.jpg,fotos/cultura/04.jpg,fotos/cultura/05.jpg,fotos/cultura/06.jpg,fotos/cultura/07.jpg,fotos/cultura/08.jpg" aria-label="Cultura: fotos que cambian solas. Tocá para pausar.">
-      <div class="cuadro-img"><img src="fotos/cultura/01.jpg" alt="Cultura"></div>
-      <figcaption><span class="cuadro-tit">Cultura</span><span class="cuadro-n">1 / 8</span><span class="cuadro-estado">Tocá para pausar</span></figcaption>
-      <button class="cuadro-prev" type="button" aria-label="Foto anterior">‹</button><button class="cuadro-next" type="button" aria-label="Foto siguiente">›</button>
-    </figure>
+    <div class="gallery gallery-4">
+      <figure class="ph"><img src="fotos/cultura/01.jpg" alt="Público en una noche de Sop Sopa" loading="lazy"></figure>
+      <figure class="ph"><img src="fotos/cultura/02.jpg" alt="Público en un evento del local" loading="lazy"></figure>
+      <figure class="ph"><img src="fotos/cultura/03.jpg" alt="Banda en vivo en Notte Italiana, vista desde arriba" loading="lazy"></figure>
+      <figure class="ph"><img src="fotos/cultura/04.jpg" alt="DJ en vivo" loading="lazy"></figure>
+      <figure class="ph"><img src="fotos/cultura/05.jpg" alt="Mesas llenas en Sop Sopa" loading="lazy"></figure>
+      <figure class="ph"><img src="fotos/cultura/06.jpg" alt="Gente charlando en un evento" loading="lazy"></figure>
+      <figure class="ph"><img src="fotos/cultura/07.jpg" alt="Brindis" loading="lazy"></figure>
+      <figure class="ph"><img src="fotos/cultura/08.jpg" alt="Patio en una noche de Sop Sopa" loading="lazy"></figure>
     </div>
   </div>
 </section>
@@ -297,10 +303,15 @@
         <p class="muted small">El uso del espacio municipal depende de un permiso de la municipalidad. Hoy está en uso y el trámite está para renovar.</p>
       </div>
     </div>
-    <div class="cuadros cuadros-uno">
-    <figure class="cuadro cuadro-contain" data-fotos="fotos/espacio/01.jpg,fotos/espacio/02.jpg,fotos/espacio/03.jpg,fotos/espacio/04.jpg,fotos/espacio/05.jpg,fotos/espacio/06.jpg,fotos/espacio/07.jpg,fotos/espacio/08.jpg,fotos/espacio/09.jpg,fotos/espacio/10.jpg,fotos/espacio/11.jpg,fotos/espacio/12.jpg,fotos/espacio/13.jpg,fotos/espacio/14.jpg,fotos/espacio/15.jpg,fotos/espacio/16.jpg,fotos/espacio/17.jpg,fotos/espacio/18.jpg,fotos/espacio/19.jpg,fotos/espacio/20.jpg,fotos/espacio/21.jpg,fotos/espacio/22.jpg" aria-label="El espacio: fotos que cambian solas. Tocá para pausar.">
+    <div class="cuadros">
+    <figure class="cuadro cuadro-contain" data-fotos="fotos/espacio/01.jpg,fotos/espacio/03.jpg,fotos/espacio/05.jpg,fotos/espacio/07.jpg,fotos/espacio/09.jpg,fotos/espacio/11.jpg,fotos/espacio/13.jpg,fotos/espacio/15.jpg,fotos/espacio/17.jpg,fotos/espacio/19.jpg,fotos/espacio/21.jpg" data-rpm="30" data-desfase="0" aria-label="El espacio: fotos que cambian solas. Tocá para pausar.">
       <div class="cuadro-img"><img src="fotos/espacio/01.jpg" alt="El espacio"></div>
-      <figcaption><span class="cuadro-tit">El espacio</span><span class="cuadro-n">1 / 22</span><span class="cuadro-estado">Tocá para pausar</span></figcaption>
+      <figcaption><span class="cuadro-tit">El espacio</span><span class="cuadro-n">1 / 11</span><span class="cuadro-estado">Tocá para pausar</span></figcaption>
+      <button class="cuadro-prev" type="button" aria-label="Foto anterior">‹</button><button class="cuadro-next" type="button" aria-label="Foto siguiente">›</button>
+    </figure>
+    <figure class="cuadro cuadro-contain" data-fotos="fotos/espacio/02.jpg,fotos/espacio/04.jpg,fotos/espacio/06.jpg,fotos/espacio/08.jpg,fotos/espacio/10.jpg,fotos/espacio/12.jpg,fotos/espacio/14.jpg,fotos/espacio/16.jpg,fotos/espacio/18.jpg,fotos/espacio/20.jpg,fotos/espacio/22.jpg" data-rpm="30" data-desfase="1000" aria-label="El espacio: fotos que cambian solas. Tocá para pausar.">
+      <div class="cuadro-img"><img src="fotos/espacio/02.jpg" alt="El espacio"></div>
+      <figcaption><span class="cuadro-tit">El espacio</span><span class="cuadro-n">1 / 11</span><span class="cuadro-estado">Tocá para pausar</span></figcaption>
       <button class="cuadro-prev" type="button" aria-label="Foto anterior">‹</button><button class="cuadro-next" type="button" aria-label="Foto siguiente">›</button>
     </figure>
     </div>
@@ -476,16 +487,16 @@
 
   // Cuadros: cambian solos a 60 por minuto; tocar pausa / reanuda; con pausa, flechas para recorrer
   (function(){
-    var RITMO = 60000 / 60; // 60 fotos por minuto
     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
     document.querySelectorAll('.cuadro').forEach(function(c, k){
-      var fotos = c.dataset.fotos.split(','), i = 0, timer = null, visible = false;
+      var fotos = c.dataset.fotos.split(','), i = 0, timer = null, espera = null, visible = false;
+      var RITMO = 60000 / (+c.dataset.rpm || 60), DESFASE = +c.dataset.desfase || 0; // fotos por minuto y retraso de arranque
       var img = c.querySelector('img'), n = c.querySelector('.cuadro-n'), est = c.querySelector('.cuadro-estado');
       var box = c.querySelector('.cuadro-img');
       var pausado = reduce, cargadas = false;
       function precargar(){ if (cargadas) return; cargadas = true; fotos.forEach(function(s){ var im = new Image(); im.src = s; }); }
       function mostrar(j){ i = (j + fotos.length) % fotos.length; img.src = fotos[i]; box.style.setProperty('--bg', 'url(' + fotos[i] + ')'); n.textContent = (i + 1) + ' / ' + fotos.length; }
-      function andar(){ clearInterval(timer); timer = null; if (!pausado && visible) timer = setInterval(function(){ mostrar(i + 1); }, RITMO); }
+      function andar(){ clearInterval(timer); clearTimeout(espera); timer = espera = null; if (!pausado && visible) espera = setTimeout(function(){ mostrar(i + 1); timer = setInterval(function(){ mostrar(i + 1); }, RITMO); }, RITMO + DESFASE); }
       function estado(){ c.classList.toggle('pausado', pausado); est.textContent = pausado ? 'En pausa · tocá para seguir' : 'Tocá para pausar'; andar(); }
       c.addEventListener('click', function(e){ if (e.target.closest('button')) return; pausado = !pausado; estado(); });
       c.querySelector('.cuadro-prev').addEventListener('click', function(){ mostrar(i - 1); });
