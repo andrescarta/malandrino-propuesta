@@ -132,6 +132,19 @@
   .cuadro button{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:0;border-radius:50%;background:rgba(16,24,21,.7);color:var(--crema);font-size:28px;line-height:1;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}
   .cuadro-prev{left:12px}.cuadro-next{right:12px}
   .cuadro.pausado button{opacity:1;pointer-events:auto}
+  .inv{width:min(860px,calc(100vw - 32px));max-height:calc(100vh - 48px);padding:0;border:1px solid var(--linea);border-radius:var(--r2);background:var(--superficie);color:var(--crema)}
+  .inv::backdrop{background:rgba(5,8,7,.75)}
+  .inv[open]{display:flex;flex-direction:column}
+  .inv-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:20px 24px;border-bottom:1px solid var(--linea)}
+  .inv-close{background:none;border:0;color:var(--crema);font-size:32px;line-height:1;cursor:pointer;padding:0 4px}
+  .inv-body{overflow:auto;padding:0 24px 24px}
+  .inv table{width:100%;border-collapse:collapse;font-size:14px}
+  .inv thead th{position:sticky;top:0;background:var(--superficie);text-align:left;padding:14px 8px 8px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave);border-bottom:1px solid var(--linea)}
+  .inv td{padding:7px 8px;border-bottom:1px solid var(--linea)}
+  .inv .n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .inv tr.rubro td{padding-top:18px;font:700 16px/1 var(--titulo);text-transform:uppercase;color:var(--crema);border-bottom:0}
+  @media (max-width:560px){ .inv .u{display:none} .inv-head,.inv-body{padding-left:16px;padding-right:16px} }
+  .inv tfoot td{position:sticky;bottom:0;background:var(--superficie);font:900 22px/1.2 var(--titulo);text-transform:uppercase;padding-top:14px;border-top:2px solid var(--texto-suave);border-bottom:0}
   .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
   @media (max-width:860px){ .gallery{grid-template-columns:1fr 1fr} }
   @media (max-width:520px){ .gallery{grid-template-columns:1fr} }
@@ -365,7 +378,7 @@
       <tr><td>Ambientación</td><td>Trabajo de plantas en jardín y salones</td></tr>
       <tr><td>Sistema de venta</td><td>2 comanderas térmicas y caja registradora</td></tr>
     </table></div>
-    <p class="muted small">El inventario completo, ítem por ítem, está disponible a pedido.</p>
+    <button class="btn ghost inv-open" type="button" style="margin-top:20px">Ver inventario completo con precios</button>
   </div>
 </section>
 
@@ -471,7 +484,7 @@
     <p class="intro">La propuesta principal es la venta, sin un precio fijado: escuchamos ofertas por el emprendimiento en marcha con todo su equipamiento. También estamos abiertos a propuestas de sociedad.</p>
     <div class="cards">
       <div class="card"><h3>Alquiler del inmueble</h3><p>$3.000.000 por mes, con un contrato nuevo firmado directo con el propietario.</p></div>
-      <div class="card"><h3>Equipamiento</h3><p>Incluido en la operación. El inventario completo, ítem por ítem, está disponible a pedido.</p></div>
+      <div class="card"><h3>Equipamiento</h3><p>Incluido en la operación. El inventario completo, con precios, está en la sección de equipamiento.</p></div>
       <div class="card"><h3>Identidad</h3><p>El emprendimiento se puede transferir con la marca Malandrino, o el comprador puede operar con nombre e imagen propios.</p></div>
     </div>
   </div>
@@ -506,6 +519,92 @@
   <div class="wrap"><img src="marca/malandrino-isotipo-crema.svg" alt=""><span>Andrés Carta · Urquiza Sur 991, Capital, San Juan · <a href="tel:+5492647433657">264 743-3657</a></span></div>
 </footer>
 
+
+<dialog id="inventario" class="inv">
+  <div class="inv-head">
+    <div><p class="tbl-title" style="margin:0">Inventario completo</p><p class="muted small" style="margin:4px 0 0">Valores estimados del equipamiento usado, en pesos.</p></div>
+    <button class="inv-close" type="button" aria-label="Cerrar">×</button>
+  </div>
+  <div class="inv-body">
+    <table>
+      <thead><tr><th>Ítem</th><th class="n">Cant.</th><th class="n u">Unitario</th><th class="n">Total</th></tr></thead>
+      <tbody>
+          <tr class="rubro"><td colspan="4">Cocina caliente</td></tr>
+          <tr><td>Horno pizzero a piedra (1,90 m, quemador EQA 75)</td><td class="n">1</td><td class="n u">$1.200.000</td><td class="n">$1.200.000</td></tr>
+          <tr><td>Horno convector Santini MC-600</td><td class="n">1</td><td class="n u">$550.000</td><td class="n">$550.000</td></tr>
+          <tr><td>Cocina de 6 hornallas con horno</td><td class="n">1</td><td class="n u">$1.000.000</td><td class="n">$1.000.000</td></tr>
+          <tr><td>Tostadora eléctrica</td><td class="n">1</td><td class="n u">$200.000</td><td class="n">$200.000</td></tr>
+          <tr><td>Freidora a gas</td><td class="n">1</td><td class="n u">$400.000</td><td class="n">$400.000</td></tr>
+          <tr class="rubro"><td colspan="4">Cocina fría</td></tr>
+          <tr><td>Heladera bajo mesada</td><td class="n">2</td><td class="n u">$2.000.000</td><td class="n">$4.000.000</td></tr>
+          <tr><td>Mesada de trabajo con bacha, acero inoxidable</td><td class="n">2</td><td class="n u">$500.000</td><td class="n">$1.000.000</td></tr>
+          <tr><td>Mesada de trabajo 1,20 m con estantes, acero inoxidable</td><td class="n">1</td><td class="n u">$200.000</td><td class="n">$200.000</td></tr>
+          <tr><td>Freezer</td><td class="n">1</td><td class="n u">$600.000</td><td class="n">$600.000</td></tr>
+          <tr><td>Freezer</td><td class="n">1</td><td class="n u">$600.000</td><td class="n">$600.000</td></tr>
+          <tr><td>Heladera vertical</td><td class="n">1</td><td class="n u">$900.000</td><td class="n">$900.000</td></tr>
+          <tr><td>Heladera vertical</td><td class="n">1</td><td class="n u">$500.000</td><td class="n">$500.000</td></tr>
+          <tr><td>Cámara de frío</td><td class="n">1</td><td class="n u">$2.500.000</td><td class="n">$2.500.000</td></tr>
+          <tr class="rubro"><td colspan="4">Electro y utensilios</td></tr>
+          <tr><td>Licuadora</td><td class="n">1</td><td class="n u">$200.000</td><td class="n">$200.000</td></tr>
+          <tr><td>Minipimer</td><td class="n">1</td><td class="n u">$200.000</td><td class="n">$200.000</td></tr>
+          <tr><td>Amasadora 15 kg</td><td class="n">1</td><td class="n u">$400.000</td><td class="n">$400.000</td></tr>
+          <tr><td>Cortadora de papas</td><td class="n">1</td><td class="n u">$120.000</td><td class="n">$120.000</td></tr>
+          <tr class="rubro"><td colspan="4">Mobiliario</td></tr>
+          <tr><td>Estanterías</td><td class="n">2</td><td class="n u">$200.000</td><td class="n">$400.000</td></tr>
+          <tr><td>Estantería con mesada de trabajo</td><td class="n">1</td><td class="n u">$400.000</td><td class="n">$400.000</td></tr>
+          <tr><td>Mesa 70 × 70 cm, caño y fenólico</td><td class="n">38</td><td class="n u">$40.000</td><td class="n">$1.520.000</td></tr>
+          <tr><td>Silla, caño y fenólico</td><td class="n">105</td><td class="n u">$40.000</td><td class="n">$4.200.000</td></tr>
+          <tr><td>Barra</td><td class="n">3</td><td class="n u">$40.000</td><td class="n">$120.000</td></tr>
+          <tr><td>Banqueta</td><td class="n">16</td><td class="n u">$60.000</td><td class="n">$960.000</td></tr>
+          <tr class="rubro"><td colspan="4">Sonido</td></tr>
+          <tr><td>Consola de 6 canales SKP</td><td class="n">1</td><td class="n u">$400.000</td><td class="n">$400.000</td></tr>
+          <tr><td>Parlante SKP</td><td class="n">4</td><td class="n u">$200.000</td><td class="n">$800.000</td></tr>
+          <tr class="rubro"><td colspan="4">Climatización</td></tr>
+          <tr><td>Aire acondicionado 18.000 frigorías frío/calor</td><td class="n">2</td><td class="n u">$2.000.000</td><td class="n">$4.000.000</td></tr>
+          <tr class="rubro"><td colspan="4">Sistema de venta</td></tr>
+          <tr><td>Caja registradora</td><td class="n">1</td><td class="n u">$100.000</td><td class="n">$100.000</td></tr>
+          <tr><td>Comandera térmica USB</td><td class="n">1</td><td class="n u">$100.000</td><td class="n">$100.000</td></tr>
+          <tr><td>Comandera térmica Wi-Fi</td><td class="n">1</td><td class="n u">$100.000</td><td class="n">$100.000</td></tr>
+          <tr class="rubro"><td colspan="4">Barra</td></tr>
+          <tr><td>Cafetera espresso Gadnic</td><td class="n">1</td><td class="n u">$500.000</td><td class="n">$500.000</td></tr>
+          <tr class="rubro"><td colspan="4">Seguridad</td></tr>
+          <tr><td>Matafuego 5 kg</td><td class="n">2</td><td class="n u">$40.000</td><td class="n">$80.000</td></tr>
+          <tr><td>Matafuego clase K</td><td class="n">1</td><td class="n u">$250.000</td><td class="n">$250.000</td></tr>
+          <tr class="rubro"><td colspan="4">Exterior y ambientación</td></tr>
+          <tr><td>Sombrilla</td><td class="n">3</td><td class="n u">$150.000</td><td class="n">$450.000</td></tr>
+          <tr><td>Plantas (jardín y salones)</td><td class="n">1</td><td class="n u">$1.000.000</td><td class="n">$1.000.000</td></tr>
+          <tr class="rubro"><td colspan="4">Vajilla y bazar</td></tr>
+          <tr><td>Cuchillo de mesa</td><td class="n">109</td><td class="n u">$1.500</td><td class="n">$163.500</td></tr>
+          <tr><td>Tenedor de mesa</td><td class="n">103</td><td class="n u">$1.500</td><td class="n">$154.500</td></tr>
+          <tr><td>Cuchara sopera</td><td class="n">7</td><td class="n u">$1.500</td><td class="n">$10.500</td></tr>
+          <tr><td>Cuchara de postre</td><td class="n">24</td><td class="n u">$1.000</td><td class="n">$24.000</td></tr>
+          <tr><td>Cuchara de té / café</td><td class="n">47</td><td class="n u">$1.000</td><td class="n">$47.000</td></tr>
+          <tr><td>Pala de pizza</td><td class="n">13</td><td class="n u">$5.000</td><td class="n">$65.000</td></tr>
+          <tr><td>Frapera para botellas</td><td class="n">6</td><td class="n u">$4.000</td><td class="n">$24.000</td></tr>
+          <tr><td>Frapera de hielo, acero inoxidable</td><td class="n">26</td><td class="n u">$8.000</td><td class="n">$208.000</td></tr>
+          <tr><td>Pinza de hielo</td><td class="n">26</td><td class="n u">$4.000</td><td class="n">$104.000</td></tr>
+          <tr><td>Plato plano grande</td><td class="n">54</td><td class="n u">$9.000</td><td class="n">$486.000</td></tr>
+          <tr><td>Plato grande de cocina</td><td class="n">28</td><td class="n u">$9.000</td><td class="n">$252.000</td></tr>
+          <tr><td>Plato de postre</td><td class="n">35</td><td class="n u">$2.500</td><td class="n">$87.500</td></tr>
+          <tr><td>Dip para maní</td><td class="n">10</td><td class="n u">$1.000</td><td class="n">$10.000</td></tr>
+          <tr><td>Dip para mayonesa</td><td class="n">10</td><td class="n u">$1.000</td><td class="n">$10.000</td></tr>
+          <tr><td>Pizzera</td><td class="n">47</td><td class="n u">$18.000</td><td class="n">$846.000</td></tr>
+          <tr><td>Copa de vino</td><td class="n">24</td><td class="n u">$4.000</td><td class="n">$96.000</td></tr>
+          <tr><td>Copa de cóctel</td><td class="n">11</td><td class="n u">$3.500</td><td class="n">$38.500</td></tr>
+          <tr><td>Cuenco crema catalana</td><td class="n">18</td><td class="n u">$6.000</td><td class="n">$108.000</td></tr>
+          <tr><td>Vaso de agua largo</td><td class="n">36</td><td class="n u">$1.000</td><td class="n">$36.000</td></tr>
+          <tr><td>Vaso de jugo mediano facetado</td><td class="n">34</td><td class="n u">$2.000</td><td class="n">$68.000</td></tr>
+          <tr><td>Vaso de whisky</td><td class="n">22</td><td class="n u">$1.000</td><td class="n">$22.000</td></tr>
+          <tr><td>Jarra de agua</td><td class="n">6</td><td class="n u">$5.000</td><td class="n">$30.000</td></tr>
+          <tr><td>Pinta</td><td class="n">45</td><td class="n u">$1.800</td><td class="n">$81.000</td></tr>
+          <tr><td>Cuenco artesanal</td><td class="n">36</td><td class="n u">$2.500</td><td class="n">$90.000</td></tr>
+          <tr><td>Botella</td><td class="n">35</td><td class="n u">$2.000</td><td class="n">$70.000</td></tr>
+          <tr><td>Vela</td><td class="n">48</td><td class="n u">$1.000</td><td class="n">$48.000</td></tr>
+      </tbody>
+      <tfoot><tr><td>Total</td><td></td><td class="u"></td><td class="n">$33.129.500</td></tr></tfoot>
+    </table>
+  </div>
+</dialog>
 <script>
   document.querySelectorAll('.ph img').forEach(function(img){
     function ok(){ img.parentElement.classList.add('has-img'); }
@@ -536,6 +635,13 @@
       } else { visible = true; precargar(); }
       estado();
     });
+  })();
+
+  (function(){
+    var d = document.getElementById('inventario'); if (!d) return;
+    document.querySelectorAll('.inv-open').forEach(function(b){ b.addEventListener('click', function(){ d.showModal(); }); });
+    d.querySelector('.inv-close').addEventListener('click', function(){ d.close(); });
+    d.addEventListener('click', function(e){ if (e.target === d) d.close(); });
   })();
 </script>
 </body>
