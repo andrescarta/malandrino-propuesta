@@ -65,6 +65,11 @@
   .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 28px}
   .facts div span{display:block;line-height:1.4;margin-top:6px}
   .facts-2{margin-top:20px}
+  .facts .uso{grid-column:span 2}
+  .bateria{position:relative;height:22px;margin:12px 14px 0 0;border:2px solid var(--texto-suave);border-radius:5px;padding:3px}
+  .bateria::after{content:"";position:absolute;right:-9px;top:50%;width:5px;height:10px;transform:translateY(-50%);background:var(--texto-suave);border-radius:0 2px 2px 0}
+  .bateria i{display:block;height:100%;background:#3d8b55;border-radius:2px}
+  @media (max-width:520px){ .facts .uso{grid-column:auto} }
   @media (max-width:520px){ .facts{grid-template-columns:1fr} }
   .ig-ico img{width:28px;height:28px;display:block}
   .hero-photo{position:relative}
@@ -202,8 +207,11 @@
       </div>
       <div class="facts facts-2">
         <div><b>$219 M</b><span>ventas al año</span></div>
-        <div><b>$9,2 M</b><span>gastos fijos mensuales</span></div>
-        <div><b>$2,5 M</b><span>ganancia media por mes</span></div>
+        <div class="uso">
+          <b>24%</b>
+          <div class="bateria" role="img" aria-label="Se usa el 24% del horario posible: 30 de 126 horas por semana"><i style="width:24%"></i></div>
+          <span>del horario posible en uso: 30 de 126 horas por semana</span>
+        </div>
       </div>
     </div>
     <div class="hero-photo">
