@@ -60,7 +60,12 @@
   .facts div b{display:block;font:900 44px/1 var(--titulo)}
   .facts div span{font-size:13px;color:var(--texto-suave)}
   .facts{gap:28px 36px}
-  .ig-ico{display:inline-block;vertical-align:.12em;margin-left:6px}
+  .facts div b{display:flex;align-items:center;gap:10px}
+  .ig-ico{display:inline-flex}
+  .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 28px}
+  .facts div span{display:block;line-height:1.4;margin-top:6px}
+  .facts-2{margin-top:20px}
+  @media (max-width:520px){ .facts{grid-template-columns:1fr} }
   .ig-ico img{width:28px;height:28px;display:block}
   .hero-photo{position:relative}
   .hero-photo .sello{position:absolute;width:112px;left:-28px;bottom:-28px;z-index:2}
@@ -194,7 +199,11 @@
         <div><b>440 m²</b><span>280 bajo techo + 160 al aire libre</span></div>
         <div><b>121</b><span>cubiertos, ampliable a 165</span></div>
         <div><b>+14.000 <a class="ig-ico" href="https://www.instagram.com/malandrino.sj/" target="_blank" rel="noopener" aria-label="Instagram de Malandrino"><img src="iconos/instagram.svg" alt=""></a></b><span>seguidores orgánicos en Instagram</span></div>
-        <div><b>$219 M</b><span>en ventas en un año</span></div>
+      </div>
+      <div class="facts facts-2">
+        <div><b>$219 M</b><span>ventas al año</span></div>
+        <div><b>$9,2 M</b><span>gastos fijos mensuales</span></div>
+        <div><b>$2,5 M</b><span>ganancia media por mes</span></div>
       </div>
     </div>
     <div class="hero-photo">
