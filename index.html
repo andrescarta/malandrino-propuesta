@@ -150,6 +150,10 @@
   .planos a{position:relative;display:block;border:1px solid var(--linea);border-radius:var(--r2);overflow:hidden;background:#101815}
   .planos a:hover{border-color:var(--texto-suave)}
   .planos img{display:block;width:100%;height:auto}
+  .plano-dlg{width:min(1200px,calc(100vw - 32px))}
+  .plano-body{padding:0;background:#101815}
+  .plano-body img{display:block;width:100%;height:auto;cursor:zoom-in}
+  .plano-body.zoom img{width:2400px;max-width:none;cursor:zoom-out}
   .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
   @media (max-width:860px){ .gallery{grid-template-columns:1fr 1fr} }
   @media (max-width:520px){ .gallery{grid-template-columns:1fr} }
@@ -353,8 +357,8 @@
     </div>
     <p class="tbl-title" style="margin-top:48px">Planos</p>
     <div class="planos">
-      <a href="planos/planta-baja.jpg" target="_blank" rel="noopener"><img src="planos/planta-baja.jpg" alt="Plano de la planta baja: salón, cocina, barra, baños y vereda en esquina" loading="lazy"></a>
-      <a href="planos/planta-alta.jpg" target="_blank" rel="noopener"><img src="planos/planta-alta.jpg" alt="Plano de la planta alta: salón para eventos, balcón y doble altura" loading="lazy"></a>
+      <a href="planos/planta-baja.jpg" class="plano-open" data-titulo="Planta baja"><img src="planos/planta-baja.jpg" alt="Plano de la planta baja: salón, cocina, barra, baños y vereda en esquina" loading="lazy"></a>
+      <a href="planos/planta-alta.jpg" class="plano-open" data-titulo="Planta alta"><img src="planos/planta-alta.jpg" alt="Plano de la planta alta: salón para eventos, balcón y doble altura" loading="lazy"></a>
     </div>
     <p class="muted small">Tocá un plano para verlo en grande.</p>
     <div class="cuadros">
@@ -616,6 +620,14 @@
     </table>
   </div>
 </dialog>
+
+<dialog id="plano" class="inv plano-dlg">
+  <div class="inv-head">
+    <div><p class="tbl-title" style="margin:0" id="plano-tit">Plano</p><p class="muted small" style="margin:4px 0 0">Tocá el plano para acercar o alejar.</p></div>
+    <button class="inv-close" type="button" aria-label="Cerrar">×</button>
+  </div>
+  <div class="inv-body plano-body"><img id="plano-img" src="" alt=""></div>
+</dialog>
 <script>
   document.querySelectorAll('.ph img').forEach(function(img){
     function ok(){ img.parentElement.classList.add('has-img'); }
@@ -651,6 +663,21 @@
   (function(){
     var d = document.getElementById('inventario'); if (!d) return;
     document.querySelectorAll('.inv-open').forEach(function(b){ b.addEventListener('click', function(){ d.showModal(); }); });
+    d.querySelector('.inv-close').addEventListener('click', function(){ d.close(); });
+    d.addEventListener('click', function(e){ if (e.target === d) d.close(); });
+  })();
+
+  (function(){
+    var d = document.getElementById('plano'); if (!d) return;
+    var img = document.getElementById('plano-img'), tit = document.getElementById('plano-tit'), body = d.querySelector('.plano-body');
+    document.querySelectorAll('.plano-open').forEach(function(a){
+      a.addEventListener('click', function(e){ e.preventDefault(); img.src = a.getAttribute('href'); img.alt = a.querySelector('img').alt; tit.textContent = a.dataset.titulo; body.classList.remove('zoom'); d.showModal(); });
+    });
+    img.addEventListener('click', function(e){
+      var r = img.getBoundingClientRect(), fx = (e.clientX - r.left) / r.width, fy = (e.clientY - r.top) / r.height;
+      body.classList.toggle('zoom');
+      if (body.classList.contains('zoom')) { body.scrollLeft = fx * img.offsetWidth - body.clientWidth / 2; body.scrollTop = fy * img.offsetHeight - body.clientHeight / 2; }
+    });
     d.querySelector('.inv-close').addEventListener('click', function(){ d.close(); });
     d.addEventListener('click', function(e){ if (e.target === d) d.close(); });
   })();
