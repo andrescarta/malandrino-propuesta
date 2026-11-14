@@ -145,6 +145,11 @@
   .inv tr.rubro td{padding-top:18px;font:700 16px/1 var(--titulo);text-transform:uppercase;color:var(--crema);border-bottom:0}
   @media (max-width:560px){ .inv .u{display:none} .inv-head,.inv-body{padding-left:16px;padding-right:16px} }
   .inv tfoot td{position:sticky;bottom:0;background:var(--superficie);font:900 22px/1.2 var(--titulo);text-transform:uppercase;padding-top:14px;border-top:2px solid var(--texto-suave);border-bottom:0}
+  .planos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:700px){ .planos{grid-template-columns:1fr} }
+  .planos a{position:relative;display:block;border:1px solid var(--linea);border-radius:var(--r2);overflow:hidden;background:#101815}
+  .planos a:hover{border-color:var(--texto-suave)}
+  .planos img{display:block;width:100%;height:auto}
   .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
   @media (max-width:860px){ .gallery{grid-template-columns:1fr 1fr} }
   @media (max-width:520px){ .gallery{grid-template-columns:1fr} }
@@ -346,6 +351,12 @@
         <p class="muted small">El uso del espacio municipal depende de un permiso de la municipalidad. Hoy está en uso y el trámite está para renovar.</p>
       </div>
     </div>
+    <p class="tbl-title" style="margin-top:48px">Planos</p>
+    <div class="planos">
+      <a href="planos/planta-baja.jpg" target="_blank" rel="noopener"><img src="planos/planta-baja.jpg" alt="Plano de la planta baja: salón, cocina, barra, baños y vereda en esquina" loading="lazy"></a>
+      <a href="planos/planta-alta.jpg" target="_blank" rel="noopener"><img src="planos/planta-alta.jpg" alt="Plano de la planta alta: salón para eventos, balcón y doble altura" loading="lazy"></a>
+    </div>
+    <p class="muted small">Tocá un plano para verlo en grande.</p>
     <div class="cuadros">
     <figure class="cuadro cuadro-contain" data-fotos="fotos/espacio/01.jpg,fotos/espacio/03.jpg,fotos/espacio/05.jpg,fotos/espacio/07.jpg,fotos/espacio/09.jpg,fotos/espacio/11.jpg,fotos/espacio/13.jpg,fotos/espacio/15.jpg,fotos/espacio/17.jpg,fotos/espacio/19.jpg,fotos/espacio/21.jpg" data-rpm="30" data-desfase="0" aria-label="El espacio: fotos que cambian solas. Tocá para pausar.">
       <div class="cuadro-img"><img src="fotos/espacio/01.jpg" alt="El espacio"></div>
