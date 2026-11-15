@@ -177,6 +177,22 @@
   .mapa{position:relative;border-radius:var(--r2);overflow:hidden;border:1px solid var(--linea);aspect-ratio:16/7;background:var(--superficie)}
   .mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.35) contrast(1.05)}
   @media (max-width:860px){ .mapa{aspect-ratio:4/3} }
+  .opiniones{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;margin-top:32px}
+  @media (max-width:860px){ .opiniones{grid-template-columns:1fr} }
+  .op-g .nota{display:flex;align-items:baseline;gap:12px}
+  .op-g .nota b{font:900 64px/1 var(--titulo);color:var(--crema)}
+  .estrellas{--p:90%;font-size:22px;letter-spacing:3px;line-height:1;background:linear-gradient(90deg,#f2b632 var(--p),#3a403c var(--p));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .op-g .dist{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:6px}
+  .op-g .dist li{display:grid;grid-template-columns:14px 1fr 34px;align-items:center;gap:8px;font-size:13px;color:var(--texto-suave)}
+  .op-g .dist i{display:block;height:6px;border-radius:3px;background:#3a403c;overflow:hidden}
+  .op-g .dist i span{display:block;height:100%;background:#f2b632;border-radius:3px}
+  .op-g .dist em{font-style:normal;text-align:right}
+  .op-otras{display:flex;flex-wrap:wrap;gap:8px 20px;margin:0 0 16px;font-size:14px;color:var(--texto-suave)}
+  .op-otras b{color:var(--crema)}
+  .op-r h4{font:700 13px/1.2 var(--cuerpo);letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave);margin:16px 0 6px}
+  .op-r ul{margin:0;padding-left:18px}
+  .op-r li{margin:4px 0}
+  .ia{display:inline-block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--linea);border-radius:999px;padding:4px 10px;color:var(--texto-suave);margin-bottom:12px}
   .chart-box{background:var(--superficie);border-radius:var(--r2);padding:24px;margin:0 0 40px}
   .chart{display:block;width:100%;min-width:560px;height:auto}
   .chart text{font-family:var(--cuerpo);font-size:12px;fill:var(--texto-suave)}
@@ -268,8 +284,8 @@
     <p class="intro" style="margin-bottom:16px">Malandrino busca conectar con los otros emprendimientos de San Juan y darles un lugar en sus mesas.</p>
     <ul class="clean">
       <li><strong>Productos y materia prima local.</strong> En la carta hay vinos de bodegas, destilados, aceite de oliva y aceitunas de productores sanjuaninos, y en la cocina priorizamos ingredientes de proveedores locales.</li>
-      <li><strong>Eventos con productores.</strong> Catas y maridajes, como el que hicimos con Obon Wines.</li>
-      <li><strong>Espacio para artistas locales.</strong> Exposiciones y encuentros culturales.</li>
+      <li><strong>Eventos con productores.</strong> Cata de aceite de oliva con Montefino; maridaje con Montefino, aceto Donna Arletti y dulces de Entre Raíces; cata y maridaje con Obon Wines.</li>
+      <li><strong>Espacio para artistas locales.</strong> Exposiciones de arte, talleres de telar, tejido y cerámica, jams de músicos, noches de jazz y live sets de música electrónica, entre otros.</li>
     </ul>
     <div class="cuadros">
     <figure class="cuadro cuadro-cover" data-fotos="fotos/comida/01.jpg,fotos/comida/02.jpg,fotos/comida/03.jpg,fotos/comida/04.jpg,fotos/comida/05.jpg,fotos/comida/06.jpg,fotos/comida/07.jpg,fotos/comida/08.jpg,fotos/comida/09.jpg,fotos/comida/10.jpg,fotos/comida/11.jpg,fotos/comida/12.jpg,fotos/comida/13.jpg,fotos/comida/14.jpg,fotos/comida/15.jpg,fotos/comida/16.jpg,fotos/comida/17.jpg,fotos/comida/18.jpg,fotos/comida/19.jpg,fotos/comida/20.jpg,fotos/comida/21.jpg,fotos/comida/22.jpg,fotos/comida/23.jpg,fotos/comida/24.jpg,fotos/comida/25.jpg,fotos/comida/26.jpg,fotos/comida/27.jpg,fotos/comida/28.jpg" data-rpm="60" data-desfase="0" aria-label="Comida: fotos que cambian solas. Tocá para pausar.">
@@ -435,12 +451,40 @@
     <div class="sec-head"><span class="num">05</span><h2>Qué incluye la operación</h2></div>
     <p class="intro">Quien compra no arranca de cero: se lleva un negocio abierto, con todo lo que lo hace funcionar.</p>
     <div class="cards">
-      <div class="card"><h3>La operación en marcha</h3><p>Un local abierto, con clientela, proveedores y una forma de trabajar probada. Los clientes lo recomiendan: <a href="https://www.google.com/maps/search/?api=1&amp;query=Malandrino%2C+Urquiza+Sur+991%2C+San+Juan" target="_blank" rel="noopener">4,5 estrellas en Google con 171 reseñas</a>.</p></div>
+      <div class="card"><h3>La operación en marcha</h3><p>Un local abierto, con clientela, proveedores y una forma de trabajar probada.</p></div>
       <div class="card"><h3>Un equipo armado</h3><p>Pizzero, chef, ayudante de cocina, bachero y entre 2 y 3 mozos según la noche. Un equipo chico y ajustado al volumen actual.</p></div>
       <div class="card"><h3>El concepto de producto</h3><p>Recetas, masa de fermentación larga con biga y procesos de cocina.</p></div>
       <div class="card"><h3>Una comunidad propia</h3><p>Una cuenta de Instagram, <a href="https://www.instagram.com/malandrino.sj/" target="_blank" rel="noopener">@malandrino.sj</a>, con más de 14.000 seguidores orgánicos. Hacerlo con publicidad en Meta costaría entre $3 y $11 millones (<a href="https://felipevergara.co/blogs/meta-ads/aumentar-seguidores-instagram-meta-ads/" target="_blank" rel="noopener">referencia</a>).</p></div>
     </div>
     <a class="btn ig-link" href="https://www.instagram.com/malandrino.sj/" target="_blank" rel="noopener">Ver @malandrino.sj en Instagram</a>
+    <div class="opiniones">
+      <div class="card op-g">
+        <h3>Google</h3>
+        <div class="nota"><b>4,5</b><span class="estrellas" style="--p:90%" role="img" aria-label="4,5 de 5 estrellas">★★★★★</span></div>
+        <p class="muted small" style="margin:6px 0 0"><a href="https://www.google.com/maps/search/?api=1&amp;query=Malandrino%2C+Urquiza+Sur+991%2C+San+Juan" target="_blank" rel="noopener">171 reseñas</a> · noviembre 2026</p>
+        <ul class="dist" aria-label="Reseñas por cantidad de estrellas"><li><span>5</span><i><span style="width:100%"></span></i><em>117</em></li><li><span>4</span><i><span style="width:29%"></span></i><em>34</em></li><li><span>3</span><i><span style="width:9%"></span></i><em>11</em></li><li><span>2</span><i><span style="width:5%"></span></i><em>6</em></li><li><span>1</span><i><span style="width:3%"></span></i><em>3</em></li></ul>
+      </div>
+      <div class="card op-r">
+        <span class="ia">Resumen hecho con IA</span>
+        <h3>Lo que dicen en la red</h3>
+        <p class="op-otras"><span><b>4,8/5</b> en Restaurant Guru (148 votos)</span><span><b>9,2/10</b> en <a href="https://broccolino.com.ar/restaurante/malandrino/" target="_blank" rel="noopener">Broccolino</a> (190 reseñas)</span></p>
+        <h4>Lo que más destacan</h4>
+        <ul>
+          <li>La pizza, por lejos: masa bien lograda y mozzarella generosa. También la schiacciata y los calzones.</li>
+          <li>Las papas fritas, crocantes y de corte grueso.</li>
+          <li>La barra: fernet, vermú, cervezas y vinos, servidos en vaso frío.</li>
+          <li>El ambiente: buena música, a veces DJ o eventos, y un público de amigos y familias.</li>
+          <li>La atención, predispuesta y eficiente, y lo fácil que es estacionar.</li>
+        </ul>
+        <h4>Lo que señalan para mejorar</h4>
+        <ul>
+          <li>La música, por momentos, muy fuerte para conversar.</li>
+          <li>En las horas pico del fin de semana el local se llena y el servicio se hace más lento.</li>
+          <li>A algunos la schiacciata les resulta con mucho aceite de oliva.</li>
+        </ul>
+        <p class="muted small" style="margin-top:16px">Resumen armado por una IA que navegó y leyó opiniones públicas sobre Malandrino en Google, Restaurant Guru y Broccolino (noviembre 2026). No son citas textuales.</p>
+      </div>
+    </div>
     <p class="muted small" style="margin-top:16px">La gestión está ordenada: ventas en Fudo, con análisis por día y horario, y presencia en Google, Instagram, WhatsApp Business y Facebook.</p>
     <p class="tbl-title" style="margin-top:48px">Equipamiento incluido</p>
     <p class="intro" style="margin-bottom:16px">Todo el equipamiento, el mobiliario y la vajilla se incluyen en la operación.</p>
