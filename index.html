@@ -193,6 +193,21 @@
   .op-r ul{margin:0;padding-left:18px}
   .op-r li{margin:4px 0}
   .ia{display:inline-block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--linea);border-radius:999px;padding:4px 10px;color:var(--texto-suave);margin-bottom:12px}
+  .videos{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+  .vid{position:relative;height:280px;aspect-ratio:9/16;padding:0;border:1px solid var(--linea);border-radius:var(--r2);overflow:hidden;background:var(--superficie);cursor:pointer;color:var(--crema);font:inherit}
+  .vid.land{aspect-ratio:16/9;max-width:100%}
+  .vid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .35s}
+  .vid:hover img,.vid:focus-visible img{transform:scale(1.04)}
+  .vid::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,24,21,0) 45%,rgba(16,24,21,.85))}
+  .vid .play{position:absolute;z-index:1;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;background:rgba(230,55,56,.92);display:flex;align-items:center;justify-content:center}
+  .vid .play::before{content:"";margin-left:4px;border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent var(--crema)}
+  .vid .cap{position:absolute;z-index:1;left:12px;right:12px;bottom:10px;text-align:left;font:700 15px/1.2 var(--titulo);letter-spacing:.04em;text-transform:uppercase}
+  .vid .cap small{display:block;font:400 12px/1.4 var(--cuerpo);letter-spacing:0;text-transform:none;color:var(--texto-suave)}
+  @media (max-width:560px){ .vid{height:auto;width:calc(50% - 6px)} .vid.land{width:100%} }
+  .video-dlg{width:min(520px,calc(100vw - 32px))}
+  .video-dlg.land{width:min(980px,calc(100vw - 32px))}
+  .video-dlg .inv-body{padding:0 0 0;display:flex;justify-content:center;background:#000}
+  .video-dlg video{display:block;max-width:100%;max-height:calc(100vh - 150px);background:#000}
   .chart-box{background:var(--superficie);border-radius:var(--r2);padding:24px;margin:0 0 40px}
   .chart{display:block;width:100%;min-width:560px;height:auto}
   .chart text{font-family:var(--cuerpo);font-size:12px;fill:var(--texto-suave)}
@@ -293,9 +308,9 @@
       <figcaption><span class="cuadro-tit">Comida</span><span class="cuadro-n">1 / 28</span><span class="cuadro-estado">Tocá para pausar</span></figcaption>
       <button class="cuadro-prev" type="button" aria-label="Foto anterior">‹</button><button class="cuadro-next" type="button" aria-label="Foto siguiente">›</button>
     </figure>
-    <figure class="cuadro cuadro-cover" data-fotos="fotos/bebidas/01.jpg,fotos/bebidas/02.jpg,fotos/bebidas/03.jpg,fotos/bebidas/04.jpg,fotos/bebidas/05.jpg,fotos/bebidas/06.jpg,fotos/bebidas/07.jpg,fotos/bebidas/08.jpg,fotos/bebidas/09.jpg,fotos/bebidas/10.jpg,fotos/bebidas/11.jpg,fotos/bebidas/12.jpg,fotos/bebidas/13.jpg,fotos/bebidas/14.jpg,fotos/bebidas/15.jpg,fotos/bebidas/16.jpg,fotos/bebidas/17.jpg,fotos/bebidas/18.jpg,fotos/bebidas/19.jpg,fotos/bebidas/20.jpg,fotos/bebidas/21.jpg,fotos/bebidas/22.jpg,fotos/bebidas/23.jpg,fotos/bebidas/24.jpg" data-rpm="60" data-desfase="500" aria-label="Bebidas: fotos que cambian solas. Tocá para pausar.">
+    <figure class="cuadro cuadro-cover" data-fotos="fotos/bebidas/01.jpg,fotos/bebidas/02.jpg,fotos/bebidas/03.jpg,fotos/bebidas/04.jpg,fotos/bebidas/05.jpg,fotos/bebidas/06.jpg,fotos/bebidas/07.jpg,fotos/bebidas/08.jpg,fotos/bebidas/09.jpg,fotos/bebidas/10.jpg,fotos/bebidas/11.jpg,fotos/bebidas/12.jpg,fotos/bebidas/13.jpg,fotos/bebidas/14.jpg,fotos/bebidas/15.jpg,fotos/bebidas/16.jpg,fotos/bebidas/17.jpg,fotos/bebidas/18.jpg,fotos/bebidas/19.jpg,fotos/bebidas/20.jpg,fotos/bebidas/21.jpg,fotos/bebidas/22.jpg" data-rpm="60" data-desfase="500" aria-label="Bebidas: fotos que cambian solas. Tocá para pausar.">
       <div class="cuadro-img"><img src="fotos/bebidas/01.jpg" alt="Bebidas"></div>
-      <figcaption><span class="cuadro-tit">Bebidas</span><span class="cuadro-n">1 / 24</span><span class="cuadro-estado">Tocá para pausar</span></figcaption>
+      <figcaption><span class="cuadro-tit">Bebidas</span><span class="cuadro-n">1 / 22</span><span class="cuadro-estado">Tocá para pausar</span></figcaption>
       <button class="cuadro-prev" type="button" aria-label="Foto anterior">‹</button><button class="cuadro-next" type="button" aria-label="Foto siguiente">›</button>
     </figure>
     </div>
@@ -308,6 +323,17 @@
       <figure class="ph"><img src="fotos/cultura/06.jpg" alt="Gente charlando en un evento" loading="lazy"></figure>
       <figure class="ph"><img src="fotos/cultura/07.jpg" alt="Brindis" loading="lazy"></figure>
       <figure class="ph"><img src="fotos/cultura/08.jpg" alt="Patio en una noche de Sop Sopa" loading="lazy"></figure>
+    </div>
+    <p class="tbl-title" style="margin-top:48px">Malandrino en movimiento</p>
+    <p class="muted" style="margin:0">Tocá un video para verlo.</p>
+    <div class="videos">
+      <button class="vid land" type="button" data-src="videos/drone.mp4" data-titulo="El local desde el aire" data-land="1" aria-label="Ver video: El local desde el aire (1:01)"><img src="videos/drone.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">El local desde el aire<small>1:01</small></span></button>
+      <button class="vid" type="button" data-src="videos/schiacciata.mp4" data-titulo="Schiacciata" data-land="0" aria-label="Ver video: Schiacciata (0:20)"><img src="videos/schiacciata.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">Schiacciata<small>0:20</small></span></button>
+      <button class="vid" type="button" data-src="videos/pizza.mp4" data-titulo="Pizza" data-land="0" aria-label="Ver video: Pizza (0:13)"><img src="videos/pizza.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">Pizza<small>0:13</small></span></button>
+      <button class="vid" type="button" data-src="videos/calzone-vermouth.mp4" data-titulo="Calzone y vermut" data-land="0" aria-label="Ver video: Calzone y vermut (0:08)"><img src="videos/calzone-vermouth.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">Calzone y vermut<small>0:08</small></span></button>
+      <button class="vid" type="button" data-src="videos/social.mp4" data-titulo="Social" data-land="0" aria-label="Ver video: Social (0:11)"><img src="videos/social.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">Social<small>0:11</small></span></button>
+      <button class="vid" type="button" data-src="videos/comanda.mp4" data-titulo="Comanda" data-land="0" aria-label="Ver video: Comanda (0:15)"><img src="videos/comanda.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">Comanda<small>0:15</small></span></button>
+      <button class="vid" type="button" data-src="videos/iced-coffee.mp4" data-titulo="Café helado" data-land="0" aria-label="Ver video: Café helado (0:13)"><img src="videos/iced-coffee.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">Café helado<small>0:13</small></span></button>
     </div>
   </div>
 </section>
@@ -480,7 +506,6 @@
         <ul>
           <li>La música, por momentos, muy fuerte para conversar.</li>
           <li>En las horas pico del fin de semana el local se llena y el servicio se hace más lento.</li>
-          <li>A algunos la schiacciata les resulta con mucho aceite de oliva.</li>
         </ul>
         <p class="muted small" style="margin-top:16px">Resumen armado por una IA que navegó y leyó opiniones públicas sobre Malandrino en Google, Restaurant Guru y Broccolino (noviembre 2026). No son citas textuales.</p>
       </div>
@@ -663,6 +688,13 @@
   </div>
 </dialog>
 
+<dialog id="video" class="inv video-dlg">
+  <div class="inv-head">
+    <p class="tbl-title" style="margin:0" id="video-tit">Video</p>
+    <button class="inv-close" type="button" aria-label="Cerrar">×</button>
+  </div>
+  <div class="inv-body"><video id="video-el" controls playsinline preload="none"></video></div>
+</dialog>
 <dialog id="plano" class="inv plano-dlg">
   <div class="inv-head">
     <div><p class="tbl-title" style="margin:0" id="plano-tit">Plano</p><p class="muted small" style="margin:4px 0 0">Tocá el plano para acercar o alejar.</p></div>
@@ -720,6 +752,22 @@
       body.classList.toggle('zoom');
       if (body.classList.contains('zoom')) { body.scrollLeft = fx * img.offsetWidth - body.clientWidth / 2; body.scrollTop = fy * img.offsetHeight - body.clientHeight / 2; }
     });
+    d.querySelector('.inv-close').addEventListener('click', function(){ d.close(); });
+    d.addEventListener('click', function(e){ if (e.target === d) d.close(); });
+  })();
+
+  (function(){
+    var d = document.getElementById('video'); if (!d) return;
+    var v = document.getElementById('video-el'), tit = document.getElementById('video-tit');
+    document.querySelectorAll('.vid').forEach(function(b){
+      b.addEventListener('click', function(){
+        tit.textContent = b.dataset.titulo; d.classList.toggle('land', b.dataset.land === '1');
+        v.src = b.dataset.src; d.showModal();
+        var pr = v.play(); if (pr && pr.catch) pr.catch(function(){});
+      });
+    });
+    function cerrar(){ v.pause(); v.removeAttribute('src'); v.load(); }
+    d.addEventListener('close', cerrar);
     d.querySelector('.inv-close').addEventListener('click', function(){ d.close(); });
     d.addEventListener('click', function(e){ if (e.target === d) d.close(); });
   })();
