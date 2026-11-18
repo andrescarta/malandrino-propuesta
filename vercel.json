@@ -1,0 +1,6 @@
+{
+  "rewrites": [{ "source": "/datos.01", "destination": "/datos.01/index.html" }],
+  "headers": [
+    { "source": "/datos.01(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] }
+  ]
+}
