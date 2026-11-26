@@ -249,3 +249,4 @@
   .pills li.hl{background:var(--rojo);border-color:var(--rojo);color:var(--crema);font-weight:700}
   tr.main td{border-bottom:0;padding-bottom:2px}
   tr.det td{padding-top:0;font-size:14px;color:var(--texto-suave)}
+  .cards.nums .card h3{font-size:clamp(32px,3.4vw,42px);line-height:1;margin-bottom:12px}
